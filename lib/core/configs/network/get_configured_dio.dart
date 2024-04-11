@@ -1,7 +1,6 @@
 import 'package:blueprint/core/configs/network/common_dio_interceptors.dart';
 import 'package:blueprint/core/configs/urls_config.dart';
 import 'package:blueprint/core/providers/device_info_provider.dart';
-import 'package:blueprint/core/providers/firebase_installation_id_provider.dart';
 import 'package:blueprint/core/providers/package_info_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -14,14 +13,15 @@ class GetConfiguredDio {
   final UrlsConfig urlsConfig;
   final PackageInfoProvider packageInfoProvider;
   final DeviceInfoProvider deviceInfoProvider;
-  final FirebaseInstallationIdProvider firebaseInstallationIdProvider;
+  //TODO uncomment when Firebase is integrated
+  // final FirebaseInstallationIdProvider firebaseInstallationIdProvider;
 
   const GetConfiguredDio({
     required this.talker,
     required this.urlsConfig,
     required this.packageInfoProvider,
     required this.deviceInfoProvider,
-    required this.firebaseInstallationIdProvider,
+    // required this.firebaseInstallationIdProvider,
   });
 
   Future<Dio> call() async {
@@ -50,7 +50,7 @@ class GetConfiguredDio {
 
     final deviceInfo = await deviceInfoProvider();
     final appVersion = packageInfoProvider().version;
-    final installationId = await firebaseInstallationIdProvider();
+    // final installationId = await firebaseInstallationIdProvider();
 
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -58,7 +58,7 @@ class GetConfiguredDio {
           options.headers['OS'] = deviceInfo.operatingSystem;
           options.headers['OS-Version'] = deviceInfo.operatingSystemVersion;
           options.headers['AppVersion'] = appVersion;
-          options.headers['Installation-Id'] = installationId;
+          // options.headers['Installation-Id'] = installationId;
 
           return handler.next(options);
         },

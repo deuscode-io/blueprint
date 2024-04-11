@@ -3,13 +3,8 @@ import 'package:blueprint/app.dart';
 import 'package:blueprint/core/DI/setup_automatic_di.dart';
 import 'package:blueprint/core/DI/setup_manual_di.dart';
 import 'package:blueprint/core/configs/database_config.dart';
-import 'package:blueprint/models/firebase/default_firebase_options.dart';
+import 'package:blueprint/ui/wrappers/localization_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -19,13 +14,14 @@ void main() async {
 
   await _askForAppTrackingTransparencyPermission();
 
-  await _setupFirebaseCore();
-
-  _setupFirebaseCrashlytics();
-
-  await _setupFirebaseAnalytics();
-
-  await _setupFirebaseRemoteConfig();
+  //TODO uncomment when Firebase is integrated
+  // await _setupFirebaseCore();
+  //
+  // _setupFirebaseCrashlytics();
+  //
+  // await _setupFirebaseAnalytics();
+  //
+  // await _setupFirebaseRemoteConfig();
 
   await _setupHiveDB();
 
@@ -37,12 +33,17 @@ void main() async {
 
   _setupDeviceOrientation();
 
-  runApp(const App());
+  runApp(
+    const LocalizationWrapper(
+      child: App(),
+    ),
+  );
 }
 
 Future<void> _askForAppTrackingTransparencyPermission() async {
   try {
-    if (await AppTrackingTransparency.trackingAuthorizationStatus == TrackingStatus.notDetermined) {
+    final permission = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (permission == TrackingStatus.notDetermined) {
       await AppTrackingTransparency.requestTrackingAuthorization();
     }
   } catch (error) {
@@ -53,38 +54,39 @@ Future<void> _askForAppTrackingTransparencyPermission() async {
   }
 }
 
-Future<void> _setupFirebaseCore() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-}
-
-void _setupFirebaseCrashlytics() {
-  if (kDebugMode) return;
-
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack);
-    return true;
-  };
-}
-
-Future<void> _setupFirebaseAnalytics() async {
-  await FirebaseAnalytics.instance.app.setAutomaticDataCollectionEnabled(kReleaseMode);
-}
-
-Future<void> _setupFirebaseRemoteConfig() async {
-  final remoteConfig = FirebaseRemoteConfig.instance;
-
-  await remoteConfig.setConfigSettings(
-    RemoteConfigSettings(
-      fetchTimeout: const Duration(minutes: 1),
-      minimumFetchInterval: kReleaseMode ? const Duration(hours: 3) : const Duration(minutes: 30),
-    ),
-  );
-}
+//TODO uncomment when Firebase is integrated
+// Future<void> _setupFirebaseCore() async {
+//   await Firebase.initializeApp(
+//     options: DefaultFirebaseOptions.currentPlatform,
+//   );
+// }
+//
+// void _setupFirebaseCrashlytics() {
+//   if (kDebugMode) return;
+//
+//   FlutterError.onError = (errorDetails) {
+//     FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+//   };
+//   PlatformDispatcher.instance.onError = (error, stack) {
+//     FirebaseCrashlytics.instance.recordError(error, stack);
+//     return true;
+//   };
+// }
+//
+// Future<void> _setupFirebaseAnalytics() async {
+//   await FirebaseAnalytics.instance.app.setAutomaticDataCollectionEnabled(kReleaseMode);
+// }
+//
+// Future<void> _setupFirebaseRemoteConfig() async {
+//   final remoteConfig = FirebaseRemoteConfig.instance;
+//
+//   await remoteConfig.setConfigSettings(
+//     RemoteConfigSettings(
+//       fetchTimeout: const Duration(minutes: 1),
+//       minimumFetchInterval: kReleaseMode ? const Duration(hours: 3) : const Duration(minutes: 30),
+//     ),
+//   );
+// }
 
 Future<void> _setupHiveDB() async {
   await Hive.initFlutter(const DatabaseConfig().hiveFolderPath);

@@ -50,6 +50,7 @@ dependencies:
   firebase_messaging: ^14.6.4
 
   envied: ^0.5.4
+  uuid: ^4.4.0
 
 
 dev_dependencies:
@@ -70,4 +71,9 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+
+  assets:
+    - assets/translations/
+
 

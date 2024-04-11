@@ -1,5 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'package:uuid/uuid.dart';
+import 'package:injectable/injectable.dart';
 
 @injectable
 class GeneratedUuidProvider {
