@@ -1,0 +1,4 @@
+{
+  "home_description": "Vous avez appuyé sur le bouton autant de fois {count}",
+  "home_action": "Incrément"
+}
