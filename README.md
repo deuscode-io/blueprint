@@ -6,10 +6,39 @@ A new Flutter project.
 
 ### Mobile app for a new trading platform.
 
+- [Features](#features)
 - [Installation](#installation)
 - [About external packages](#about-external-packages)
 - [I18n](#i18n)
     - [How to generate locale keys:](#how-to-generate-locale-keys)
+
+---
+
+## Features
+1. Firebase Core setup
+2. Firebase Crashlytics setup
+3. Firebase Analytics setup
+4. Firebase Remote config setup
+5. Manual DI setup
+6. Automatic DI setup
+7. IOS tracking authorization dialogue and request permission to collect data
+8. Lightweight and blazing fast key-value database (write & read an auth token)
+9. Explicitly reads environment variables into a dart file from a .env file for more security and faster start up times
+10. Freezed setup (code generation for immutable classes)
+11. BLoC (a predictable state management)
+12. Authentication cubit to handle auth state
+13. WebSocket integration (only one connection is possible, handle reconnection). Ready to listen to incoming events
+14. RESTFul integration (dio + auth token interceptor + headers interceptor)
+15. Lock device orientation
+16. Localization setup (support English, French, Spanish)
+17. Unit tests + utils for testing
+18. Device info + package info providers
+19. Custom gitignore file
+20. Firebase installation id
+21. Generate uuid v4
+22. InfoPlist catalog to translate texts for permission requests
+23. A declarative router for Flutter based on Navigation 2 supporting deep linking, data-driven routes (go_router)
+24. Tuned dart analyzer rules
 
 ---
 
