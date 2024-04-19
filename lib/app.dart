@@ -3,7 +3,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({
+    super.key,
+    required this.theme,
+    required this.darkTheme,
+  });
+
+  final ThemeData theme;
+  final ThemeData darkTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +19,8 @@ class App extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: theme,
+      darkTheme: darkTheme,
       routerConfig: routerConfig,
     );
   }

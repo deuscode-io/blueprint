@@ -32,9 +32,9 @@ class AppElevatedButton extends StatelessWidget {
           IntrinsicWidth(
             child: Opacity(
               opacity: _indicatorOpacity,
-              child: const SpinKitThreeBounce(
+              child: SpinKitThreeBounce(
                 size: 24,
-                color: Colors.amber,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
