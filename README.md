@@ -11,34 +11,35 @@ A new Flutter project.
 - [About external packages](#about-external-packages)
 - [I18n](#i18n)
     - [How to generate locale keys:](#how-to-generate-locale-keys)
+- [Splash screen](#splash-screen)
+    - [How to generate splash screen:](#how-to-generate-splash-screen)
+- [Launcher icons](#launcher-icons)
+    - [How to generate launcher icons:](#how-to-generate-launcher-icons)
 
 ---
 
 ## Features
-1. Firebase Core setup
-2. Firebase Crashlytics setup
-3. Firebase Analytics setup
-4. Firebase Remote config setup
-5. Manual DI setup
-6. Automatic DI setup
-7. IOS tracking authorization dialogue and request permission to collect data
-8. Lightweight and blazing fast key-value database (write & read an auth token)
-9. Explicitly reads environment variables into a dart file from a .env file for more security and faster start up times
-10. Freezed setup (code generation for immutable classes)
-11. BLoC (a predictable state management)
-12. Authentication cubit to handle auth state
-13. WebSocket integration (only one connection is possible, handle reconnection). Ready to listen to incoming events
-14. RESTFul integration (dio + auth token interceptor + headers interceptor)
-15. Lock device orientation
-16. Localization setup (support English, French, Spanish)
-17. Unit tests + utils for testing
-18. Device info + package info providers
-19. Custom gitignore file
-20. Firebase installation id
-21. Generate uuid v4
-22. InfoPlist catalog to translate texts for permission requests
-23. A declarative router for Flutter based on Navigation 2 supporting deep linking, data-driven routes (go_router)
-24. Tuned dart analyzer rules
+1. The splash screen 
+2. The launcher icons
+3. Dark and Light modes
+4. Dependency injection (Manual + Auto)
+5. IOS tracking authorization dialogue and request permission to collect data
+6. Firebase apps (Core, Crashlytics, Analytics, Remote config, Installation ID)
+7. Lock device orientation
+8. Localization (English, French, Spanish languages support)
+9. InfoPlist catalog to translate texts for permission requests
+10. WebSocket integration (only one connection is possible, handle reconnection). Ready to listen to incoming events
+11. RESTFul integration (dio + auth token interceptor + headers interceptor)
+12. Custom .gitignore file
+13. Unit tests + utils for testing
+14. Generate uuid v4
+15. Device info + package info providers 
+16. Lightweight and blazing fast key-value database (write & read an auth token)
+17. Explicitly reads environment variables into a dart file from a .env file for more security and faster start up times 
+18. Freezed setup (code generation for immutable classes)
+19. BLoC (a predictable state management)
+20. Authentication cubit to handle auth state 
+21. Tuned dart analyzer rules
 
 ---
 
@@ -77,5 +78,33 @@ dart run easy_localization:generate -O lib/core/i18n -f keys -o locale_keys.g.da
 ```
 
 [Docs](https://pub.dev/packages/easy_localization#-localization-keys)
+
+---
+
+## Splash screen
+
+Use flutter_native_splash.yaml to replace the splash screen
+
+### How to generate splash screen:
+
+```shell
+dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+```
+
+[Docs](https://pub.dev/packages/flutter_native_splash)
+
+---
+
+## Launcher icons
+
+Use flutter_launcher_icons.yaml to replace the launcher icons
+
+### How to generate launcher icons:
+
+```shell
+dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+```
+
+[Docs](https://pub.dev/packages/flutter_launcher_icons)
 
 ---
