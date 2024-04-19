@@ -15,8 +15,16 @@ class AdaptiveThemeWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-      light: ThemeData.light(useMaterial3: true),
-      dark: ThemeData.dark(useMaterial3: true),
+      light: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.light,
+        primaryColor: Colors.purple,
+      ),
+      dark: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        primaryColor: Colors.deepPurple,
+      ),
       initial: savedThemeMode ?? AdaptiveThemeMode.light,
       debugShowFloatingThemeButton: !kReleaseMode,
       builder: builder,
