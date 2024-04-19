@@ -1,6 +1,9 @@
 # blueprint
 
-A new Flutter project.
+Template project to start development
+
+![intro.gif](..%2F..%2F..%2F..%2FDesktop%2Fintro.gif)
+
 
 ---
 
