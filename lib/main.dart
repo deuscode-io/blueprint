@@ -9,6 +9,7 @@ import 'package:blueprint/ui/wrappers/localization_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -36,6 +37,10 @@ void main() async {
   _setupDeviceOrientation();
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+
+  //TODO remove next line
+  await Future.delayed(const Duration(seconds: 2));
+  _onAppInitialized();
 
   runApp(
     LocalizationWrapper(
@@ -114,6 +119,17 @@ void _setupDeviceOrientation() {
     [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
+    ],
+  );
+}
+
+void _onAppInitialized() {
+  FlutterNativeSplash.remove();
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [
+      SystemUiOverlay.bottom,
+      SystemUiOverlay.top,
     ],
   );
 }
