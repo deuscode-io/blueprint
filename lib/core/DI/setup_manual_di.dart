@@ -33,7 +33,7 @@ Future<void> setupManualDI() async {
   // );
 
   DependencyRegistrar.registerSingleton(TalkerFlutter.init());
-  DependencyRegistrar.registerSingleton(() => Logger(talker: Injector.get()));
+  DependencyRegistrar.registerFactory(() => Logger(talker: Injector.get()));
 
   DependencyRegistrar.registerSingleton(const UrlsConfig());
   DependencyRegistrar.registerSingleton(const DatabaseConfig());
