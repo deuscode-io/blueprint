@@ -1,12 +1,15 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:blueprint/app.dart';
 import 'package:blueprint/core/DI/setup_automatic_di.dart';
 import 'package:blueprint/core/DI/setup_manual_di.dart';
 import 'package:blueprint/core/configs/database_config.dart';
+import 'package:blueprint/ui/wrappers/adaptive_theme_wrapper.dart';
 import 'package:blueprint/ui/wrappers/localization_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -33,9 +36,23 @@ void main() async {
 
   _setupDeviceOrientation();
 
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+
+  //TODO remove next line
+  await Future.delayed(const Duration(seconds: 2));
+  _onAppInitialized();
+
   runApp(
-    const LocalizationWrapper(
-      child: App(),
+    LocalizationWrapper(
+      child: AdaptiveThemeWrapper(
+        savedThemeMode: savedThemeMode,
+        builder: (theme, darkTheme) {
+          return App(
+            theme: theme,
+            darkTheme: darkTheme,
+          );
+        },
+      ),
     ),
   );
 }
@@ -102,6 +119,17 @@ void _setupDeviceOrientation() {
     [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
+    ],
+  );
+}
+
+void _onAppInitialized() {
+  FlutterNativeSplash.remove();
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [
+      SystemUiOverlay.bottom,
+      SystemUiOverlay.top,
     ],
   );
 }

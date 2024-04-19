@@ -14,29 +14,39 @@ class RootPage extends StatelessWidget {
         title: const Text('DeusCode blueprint'),
       ),
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
-        items: _buildBottomNavBarItems,
-        currentIndex: navigationShell.currentIndex,
-        onTap: (index) => navigationShell.goBranch(
-          index,
-          initialLocation: index == navigationShell.currentIndex,
-        ),
+      bottomNavigationBar: NavigationBar(
+        destinations: _buildBottomNavBarItems,
+        onDestinationSelected: (int index) {
+          navigationShell.goBranch(
+            index,
+            initialLocation: index == navigationShell.currentIndex,
+          );
+        },
+        selectedIndex: navigationShell.currentIndex,
       ),
     );
   }
 
-  List<BottomNavigationBarItem> get _buildBottomNavBarItems => [
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.note),
+  List<NavigationDestination> get _buildBottomNavBarItems => [
+        const NavigationDestination(
+          selectedIcon: Icon(Icons.note),
+          icon: Icon(Icons.note_outlined),
           label: 'Notes',
         ),
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
+        const NavigationDestination(
+          selectedIcon: Icon(Icons.favorite),
+          icon: Icon(Icons.favorite_outline),
           label: 'Favorites',
         ),
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+        const NavigationDestination(
+          selectedIcon: Icon(Icons.person),
+          icon: Icon(Icons.person_outlined),
           label: 'Profile',
+        ),
+        const NavigationDestination(
+          selectedIcon: Icon(Icons.settings_input_component),
+          icon: Icon(Icons.settings_input_component_outlined),
+          label: 'Components',
         ),
       ];
 }
