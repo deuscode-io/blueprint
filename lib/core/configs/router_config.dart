@@ -1,22 +1,18 @@
 import 'package:blueprint/ui/pages/components/components_page.dart';
+import 'package:blueprint/ui/pages/initial_page.dart';
 import 'package:blueprint/ui/pages/notes/detail_page.dart';
 import 'package:blueprint/ui/pages/notes/favorites_page.dart';
 import 'package:blueprint/ui/pages/notes/notes_page.dart';
+import 'package:blueprint/ui/pages/notes/root_page.dart';
 import 'package:blueprint/ui/pages/profile/profile_page.dart';
-import 'package:blueprint/ui/pages/root_page.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
-  initialLocation: '/components',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) {
-        return Container(
-          color: Colors.teal,
-        );
-      },
+      builder: (context, state) => const InitialPage(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => RootPage(

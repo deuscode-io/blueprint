@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
             focusNode: _firstNameFocusNode,
             controller: _firstNameTextController,
             textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               focusedBorder: OutlineInputBorder(),
               hintText: 'Some',
             ),
