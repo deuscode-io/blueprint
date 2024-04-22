@@ -3,7 +3,6 @@
 Template project to start development
 
 ![intro](https://github.com/deuscode-io/blueprint/assets/165549052/faf0fae2-b878-4874-94bb-ba1f28be3f3e)
->>>>>>> main
 
 
 ---
