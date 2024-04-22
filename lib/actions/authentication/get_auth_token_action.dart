@@ -17,9 +17,6 @@ class GetAuthTokenAction {
 
     final authToken = await getAuthTokenRepo();
 
-    //TODO remove next line
-    await Future.delayed(const Duration(seconds: 2));
-
     if (authToken.isEmpty) {
       authenticationCubit.setNotAuthenticated();
     } else {
