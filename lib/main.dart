@@ -6,6 +6,7 @@ import 'package:blueprint/core/DI/setup_manual_di.dart';
 import 'package:blueprint/core/configs/database_config.dart';
 import 'package:blueprint/ui/wrappers/adaptive_theme_wrapper.dart';
 import 'package:blueprint/ui/wrappers/localization_wrapper.dart';
+import 'package:blueprint/ui/wrappers/multi_bloc_provider_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,9 +48,11 @@ void main() async {
       child: AdaptiveThemeWrapper(
         savedThemeMode: savedThemeMode,
         builder: (theme, darkTheme) {
-          return App(
-            theme: theme,
-            darkTheme: darkTheme,
+          return MultiBlocProviderWrapper(
+            child: App(
+              theme: theme,
+              darkTheme: darkTheme,
+            ),
           );
         },
       ),

@@ -1,7 +1,7 @@
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/logs/logger.dart';
+import 'package:blueprint/ui/widgets/indicators/three_dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 enum ButtonState { enabled, disabled, busy }
 
@@ -32,10 +32,7 @@ class AppElevatedButton extends StatelessWidget {
           IntrinsicWidth(
             child: Opacity(
               opacity: _indicatorOpacity,
-              child: SpinKitThreeBounce(
-                size: 24,
-                color: Theme.of(context).primaryColor,
-              ),
+              child: const ThreeDotsIndicator(),
             ),
           ),
         ],

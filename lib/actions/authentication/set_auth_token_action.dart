@@ -1,6 +1,8 @@
 import 'package:blueprint/cubits/authentication/authentication_cubit.dart';
 import 'package:blueprint/repos/authentication/save_auth_token_repo.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SetAuthTokenAction {
   final SaveAuthTokenRepo saveAuthTokenRepo;
   final AuthenticationCubit authenticationCubit;

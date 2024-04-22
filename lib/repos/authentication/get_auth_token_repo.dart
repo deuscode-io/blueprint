@@ -1,6 +1,8 @@
 import 'package:blueprint/core/configs/database_config.dart';
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetAuthTokenRepo {
   const GetAuthTokenRepo({required this.hive});
 

@@ -16,7 +16,7 @@ class RootPage extends StatelessWidget {
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         destinations: _buildBottomNavBarItems,
-        onDestinationSelected: (int index) {
+        onDestinationSelected: (index) {
           navigationShell.goBranch(
             index,
             initialLocation: index == navigationShell.currentIndex,
