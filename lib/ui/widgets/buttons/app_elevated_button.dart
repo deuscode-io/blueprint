@@ -10,7 +10,7 @@ class AppElevatedButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.label,
-    required this.buttonState,
+    this.buttonState = ButtonState.enabled,
   });
 
   final VoidCallback onPressed;

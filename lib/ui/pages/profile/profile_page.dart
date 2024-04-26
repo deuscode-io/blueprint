@@ -1,4 +1,8 @@
+import 'package:blueprint/actions/authentication/set_auth_token_action.dart';
+import 'package:blueprint/core/DI/injector.dart';
+import 'package:blueprint/ui/widgets/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,39 +12,22 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  late FocusNode _firstNameFocusNode;
-  late TextEditingController _firstNameTextController;
-
-  @override
-  void initState() {
-    super.initState();
-    _firstNameFocusNode = FocusNode();
-    _firstNameTextController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  final SetAuthTokenAction _setAuthTokenAction = Injector.get();
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          TextFormField(
-            onSaved: (text) {},
-            onChanged: (text) {},
-            focusNode: _firstNameFocusNode,
-            controller: _firstNameTextController,
-            textCapitalization: TextCapitalization.words,
-            decoration: const InputDecoration(
-              focusedBorder: OutlineInputBorder(),
-              hintText: 'Some',
-            ),
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        AppElevatedButton(
+          label: 'Log out',
+          onPressed: () {
+            _setAuthTokenAction.call('');
+            context.go('/');
+          },
+        ),
+      ],
     );
   }
 }
