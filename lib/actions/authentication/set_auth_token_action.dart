@@ -13,7 +13,11 @@ class SetAuthTokenAction {
   });
 
   Future<void> call(String authToken) async {
-    authenticationCubit.setAuthToken(authToken);
+    if (authToken.isEmpty) {
+      authenticationCubit.setNotAuthenticated();
+    } else {
+      authenticationCubit.setAuthToken(authToken);
+    }
 
     await saveAuthTokenRepo(authToken);
   }

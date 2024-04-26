@@ -4,14 +4,18 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../utils/mocks/library_mocks.dart';
 
-const _authTokenFixture = 'some auth token';
+const _notEmptyToken = 'some auth token';
+const _emptyToken = '';
+
 final _authenticationCubit = MockAuthenticationCubit();
 final _saveAuthTokenRepo = MockSaveAuthTokenRepo();
 
 void main() {
   setUp(() {
-    when(_setTokenIntoAuthCubit).thenReturn(null);
-    when(_saveToken).thenAnswer(Future.value);
+    when(_setAuthToken).thenReturn(null);
+    when(_setNotAuthenticated).thenReturn(null);
+    when(_saveNotEmptyToken).thenAnswer(Future.value);
+    when(_saveEmptyToken).thenAnswer(Future.value);
   });
 
   tearDown(() {
@@ -24,22 +28,43 @@ void main() {
     () {
       test(
         'WHEN called '
+        'AND token is not empty'
         'THEN sets auth state '
         'AND saves token into local DB',
         () async {
           await SetAuthTokenAction(
             saveAuthTokenRepo: _saveAuthTokenRepo,
             authenticationCubit: _authenticationCubit,
-          )(_authTokenFixture);
+          )(_notEmptyToken);
 
-          verify(_setTokenIntoAuthCubit).called(1);
-          verify(_saveToken).called(1);
+          verify(_setAuthToken).called(1);
+          verify(_saveNotEmptyToken).called(1);
+        },
+      );
+
+      test(
+        'WHEN called '
+        'AND token is empty '
+        'THEN sets not auth state '
+        'AND clears token into local DB',
+        () async {
+          await SetAuthTokenAction(
+            saveAuthTokenRepo: _saveAuthTokenRepo,
+            authenticationCubit: _authenticationCubit,
+          )(_emptyToken);
+
+          verify(_setNotAuthenticated).called(1);
+          verify(_saveEmptyToken).called(1);
         },
       );
     },
   );
 }
 
-void _saveToken() => _saveAuthTokenRepo(_authTokenFixture);
+void _saveNotEmptyToken() => _saveAuthTokenRepo(_notEmptyToken);
 
-void _setTokenIntoAuthCubit() => _authenticationCubit.setAuthToken(_authTokenFixture);
+void _saveEmptyToken() => _saveAuthTokenRepo(_emptyToken);
+
+void _setAuthToken() => _authenticationCubit.setAuthToken(_notEmptyToken);
+
+void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();

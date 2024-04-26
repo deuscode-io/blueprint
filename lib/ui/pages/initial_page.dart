@@ -44,7 +44,6 @@ class _InitialPageState extends State<InitialPage> {
                 children: [
                   AppElevatedButton(
                     label: 'login',
-                    buttonState: ButtonState.enabled,
                     onPressed: () {
                       _setAuthTokenAction('token');
                     },
