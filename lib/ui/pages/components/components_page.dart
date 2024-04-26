@@ -45,43 +45,4 @@ class _ComponentsPageState extends State<ComponentsPage> {
       ),
     );
   }
-
-// @override
-// Widget build(BuildContext context) {
-//   return CustomScrollView(
-//     slivers: [
-//       SliverToBoxAdapter(
-//         child: Scrollbar(
-//           child: ListView(
-//             scrollDirection: Axis.horizontal,
-//             children: [
-//               ElevatedButton(onPressed: () {}, child: const Text('ElevatedButton')),
-//             ],
-//
-//           ),
-//         ),
-//       ),
-//     ],
-//     // child: Column(
-//     //   children: [
-//     //     const Text('Buttons:'),
-//     //     ListView(
-//     //       shrinkWrap: false,
-//     //       scrollDirection: Axis.horizontal,
-//     //       children: [
-//     //         ElevatedButton(onPressed: () {}, child: const Text('ElevatedButton')),
-//     //       ],
-//     //     ),
-//     //     FilledButton(onPressed: () {}, child: const Text('FilledButton')),
-//     //     FilledButton.tonal(onPressed: () {}, child: const Text('FilledButtonTonal')),
-//     //     OutlinedButton(onPressed: () {}, child: const Text('OutlinedButton')),
-//     //     TextButton(onPressed: () {}, child: const Text('TextButton')),
-//     //     const SizedBox(height: 24),
-//     //     const Text('TextFields:'),
-//     //   ],
-//     // ).childrenPadding(
-//     //   const EdgeInsets.only(top: 12),
-//     // ),
-//   );
-// }
 }
