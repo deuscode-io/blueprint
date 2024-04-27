@@ -1,3 +1,4 @@
+import 'package:blueprint/utils/appearance/appearance_library.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -11,9 +12,13 @@ class ThreeDotsIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).brightness == Brightness.dark
+        ? AppColorsDark.threeDotIndicatorColor
+        : AppColorsLight.threeDotIndicatorColor;
+
     return SpinKitThreeBounce(
       size: size,
-      color: Theme.of(context).primaryColor,
+      color: color,
     );
   }
 }

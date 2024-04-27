@@ -1,4 +1,11 @@
 {
   "home_description": "Has pulsado el botón tantas veces {count}",
-  "home_action": "Incremento"
+  "home_action": "Incremento",
+  "text_field_labels": {
+    "first_name": "Nombre",
+    "last_name": "Apellido",
+    "dob": "Fecha de nacimiento",
+    "email": "Correo electrónico",
+    "phone": "Teléfono"
+  }
 }
