@@ -1,7 +1,8 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:blueprint/utils/appearance/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/appearance/appearance_library.dart';
 
 class AdaptiveThemeWrapper extends StatelessWidget {
   const AdaptiveThemeWrapper({
@@ -19,12 +20,14 @@ class AdaptiveThemeWrapper extends StatelessWidget {
       light: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        primaryColor: Colors.purple,
+        colorScheme: colorScheme,
+        inputDecorationTheme: inputDecorationTheme,
       ),
       dark: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        primaryColor: AppColors.main,
+        colorScheme: colorSchemeDark,
+        inputDecorationTheme: inputDecorationThemeDark,
       ),
       initial: savedThemeMode ?? AdaptiveThemeMode.light,
       debugShowFloatingThemeButton: !kReleaseMode,
