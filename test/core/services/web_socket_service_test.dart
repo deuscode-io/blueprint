@@ -5,7 +5,8 @@ import 'package:blueprint/core/services/web_socket_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../utils/mocks/library_mocks.dart';
+import '../../test_utils/mocks/library_mocks.dart';
+
 
 const _accountId = 'test_account_id';
 const _sessionId = 'test_session_id';
