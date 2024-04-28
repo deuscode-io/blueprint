@@ -2,7 +2,7 @@ import 'package:blueprint/core/providers/web_socket/connection_subscription_prov
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../utils/mocks/library_mocks.dart';
+import '../../../test_utils/mocks/library_mocks.dart';
 
 final _provider = ConnectionSubscriptionProvider();
 final _mockSubscription = MockStreamSubscription();

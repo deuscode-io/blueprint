@@ -3,7 +3,8 @@ import 'package:blueprint/repos/authentication/save_auth_token_repo.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../utils/mocks/library_mocks.dart';
+import '../../test_utils/mocks/library_mocks.dart';
+
 
 final _hiveDB = MockHive();
 final _hiveBox = MockBox();

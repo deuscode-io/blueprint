@@ -2,7 +2,8 @@ import 'package:blueprint/core/providers/web_socket/io_web_socket_channel_provid
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../utils/mocks/library_mocks.dart';
+import '../../../test_utils/mocks/library_mocks.dart';
+
 
 final _provider = IOWebSocketChannelProvider();
 final _mockSocketChannel = MockIOWebSocketChannel();

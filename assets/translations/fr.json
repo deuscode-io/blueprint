@@ -7,5 +7,17 @@
     "dob": "Date de naissance",
     "email": "Email",
     "phone": "Téléphone"
+  },
+  "app_email_validator" : {
+    "empty_email" : "Veuillez saisir votre adresse e-mail",
+    "not_valid_email" : "Veuillez saisir une adresse e-mail valide"
+  },
+  "first_name_validator" : {
+    "empty_first_name" : "Veuillez saisir votre prénom",
+    "prénom_non_valide" : "Veuillez saisir un prénom valide"
+  },
+  "last_name_validator" : {
+    "empty_last_name" : "Veuillez saisir votre nom de famille",
+    "not_valid_last_name" : "Veuillez saisir un nom de famille valide"
   }
 }

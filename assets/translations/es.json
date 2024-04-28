@@ -7,5 +7,17 @@
     "dob": "Fecha de nacimiento",
     "email": "Correo electrónico",
     "phone": "Teléfono"
+  },
+  "app_email_validator": {
+    "empty_email": "Por favor, introduzca su dirección de correo electrónico",
+    "not_valid_email": "Por favor, introduzca una dirección de correo electrónico válida"
+  },
+  "validador_nombre": {
+    "empty_first_name": "Por favor, introduzca su nombre de pila",
+    "not_valid_first_name": "Por favor, introduzca un nombre de pila válido"
+  },
+  "last_name_validator": {
+    "empty_last_name": "Por favor, introduzca su apellido",
+    "not_valid_last_name": "Por favor, introduzca un apellido válido"
   }
 }
