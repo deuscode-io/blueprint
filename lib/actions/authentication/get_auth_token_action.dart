@@ -13,14 +13,18 @@ class GetAuthTokenAction {
   });
 
   Future<void> call() async {
-    authenticationCubit.setLoading();
+    try {
+      authenticationCubit.setLoading();
 
-    final authToken = await getAuthTokenRepo();
+      final authToken = await getAuthTokenRepo();
 
-    if (authToken.isEmpty) {
-      authenticationCubit.setNotAuthenticated();
-    } else {
-      authenticationCubit.setAuthToken(authToken);
+      if (authToken.isEmpty) {
+        authenticationCubit.setNotAuthenticated();
+      } else {
+        authenticationCubit.setAuthenticated(authToken);
+      }
+    } on Exception catch (e) {
+      authenticationCubit.setLoadingError(e.toString());
     }
   }
 }

@@ -31,26 +31,24 @@ class _InitialPageState extends State<InitialPage> {
       body: Center(
         child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
           listener: (context, state) {
-            if (state.isAuthenticated) context.go('/notes');
+            if (state is Authenticated) context.go('/notes');
           },
           builder: (context, state) {
-            if (state.isLoading) {
-              return const ThreeDotsIndicator();
-            } else if (state.isAuthenticated) {
-              return const SizedBox();
-            } else {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppElevatedButton(
-                    label: 'login',
-                    onPressed: () {
-                      _setAuthTokenAction('token');
-                    },
-                  ),
-                ],
-              );
-            }
+            return switch (state) {
+              Loading _ => const ThreeDotsIndicator(),
+              Authenticated _ => const SizedBox(),
+              _ => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppElevatedButton(
+                      label: 'login',
+                      onPressed: () {
+                        _setAuthTokenAction('token');
+                      },
+                    ),
+                  ],
+                ),
+            };
           },
         ),
       ),

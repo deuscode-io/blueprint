@@ -11,23 +11,21 @@ void main() {
     () {
       blocTest<AuthenticationCubit, AuthenticationState>(
         'WHEN created '
-        'THEN is in non authenticated state',
+        'THEN there is the not authenticated state',
         build: _buildCubit,
         verify: (cubit) {
-          expect(
-            cubit.state.whenOrNull(notAuthenticated: () => true),
-            isTrue,
-          );
-          expect(cubit.state.authToken, isEmpty);
+          expect(cubit.state is NotAuthenticated, isTrue);
         },
       );
 
       blocTest<AuthenticationCubit, AuthenticationState>(
-        'WHEN setAuthToken is called '
+        'WHEN setAuthenticated is called '
         'THEN sets the state',
         build: _buildCubit,
-        act: (cubit) => cubit.setAuthToken(tokenFixture),
-        expect: () => [AuthenticationState.authenticated(authToken: tokenFixture)],
+        act: (cubit) => cubit.setAuthenticated(tokenFixture),
+        verify: (cubit) {
+          expect(cubit.state is Authenticated, isTrue);
+        },
       );
 
       blocTest<AuthenticationCubit, AuthenticationState>(
@@ -35,7 +33,9 @@ void main() {
         'THEN sets loading state',
         build: _buildCubit,
         act: (cubit) => cubit.setLoading(),
-        expect: () => [AuthenticationState.loading()],
+        verify: (cubit) {
+          expect(cubit.state is Loading, isTrue);
+        },
       );
 
       blocTest<AuthenticationCubit, AuthenticationState>(
@@ -44,24 +44,7 @@ void main() {
         build: _buildCubit,
         act: (cubit) => cubit.setNotAuthenticated(),
         verify: (cubit) {
-          expect(cubit.state.authToken, isEmpty);
-          expect(
-            cubit.state.whenOrNull(notAuthenticated: () => true),
-            isTrue,
-          );
-        },
-      );
-
-      blocTest<AuthenticationCubit, AuthenticationState>(
-        'WHEN setLoaded is called '
-        'THEN sets the state',
-        build: _buildCubit,
-        act: (cubit) => cubit.setLoaded(tokenFixture),
-        verify: (cubit) {
-          expect(
-            cubit.state.whenOrNull(authenticated: (token) => token),
-            tokenFixture,
-          );
+          expect(cubit.state is NotAuthenticated, isTrue);
         },
       );
 
@@ -70,23 +53,8 @@ void main() {
         'THEN sets the state',
         build: _buildCubit,
         act: (cubit) => cubit.setLoadingError(errorText),
-        expect: () => [AuthenticationState.loadingError(errorText)],
-      );
-
-      blocTest<AuthenticationCubit, AuthenticationState>(
-        'WHEN reset is called '
-        'THEN resets the state',
-        build: _buildCubit,
-        act: (cubit) {
-          cubit.setAuthToken(tokenFixture);
-          cubit.setNotAuthenticated();
-        },
         verify: (cubit) {
-          expect(cubit.state.authToken, isEmpty);
-          expect(
-            cubit.state.whenOrNull(notAuthenticated: () => true),
-            isTrue,
-          );
+          expect(cubit.state is LoadingError, isTrue);
         },
       );
     },

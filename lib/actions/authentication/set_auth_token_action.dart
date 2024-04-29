@@ -16,7 +16,7 @@ class SetAuthTokenAction {
     if (authToken.isEmpty) {
       authenticationCubit.setNotAuthenticated();
     } else {
-      authenticationCubit.setAuthToken(authToken);
+      authenticationCubit.setAuthenticated(authToken);
     }
 
     await saveAuthTokenRepo(authToken);
