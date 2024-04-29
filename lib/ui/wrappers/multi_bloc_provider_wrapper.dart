@@ -1,3 +1,4 @@
+import 'package:blueprint/blocs/profile/profile_bloc.dart';
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/cubits/authentication/authentication_cubit.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,9 @@ class MultiBlocProviderWrapper extends StatelessWidget {
       providers: [
         BlocProvider.value(
           value: Injector.get<AuthenticationCubit>(),
+        ),
+        BlocProvider.value(
+          value: Injector.get<ProfileBloc>(),
         ),
       ],
       child: child,

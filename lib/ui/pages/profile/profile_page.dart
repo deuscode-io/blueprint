@@ -1,11 +1,13 @@
 import 'package:blueprint/actions/authentication/set_auth_token_action.dart';
+import 'package:blueprint/blocs/profile/profile_bloc.dart';
+import 'package:blueprint/blocs/profile/profile_event.dart';
+import 'package:blueprint/blocs/profile/profile_state.dart';
 import 'package:blueprint/core/DI/injector.dart';
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/ui/widgets/buttons/app_elevated_button.dart';
 import 'package:blueprint/ui/widgets/input_fields/email_field.dart';
 import 'package:blueprint/ui/widgets/input_fields/name_field.dart';
-import 'package:blueprint/utils/extensions/widget_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final SetAuthTokenAction _setAuthTokenAction = Injector.get();
+  final ProfileBloc _profileBloc = Injector.get();
 
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
@@ -34,6 +37,18 @@ class _ProfilePageState extends State<ProfilePage> {
     _firstNameFocusNode = FocusNode();
     _lastNameFocusNode = FocusNode();
     _emailFocusNode = FocusNode();
+
+    _firstNameFocusNode.addListener(() {
+      _profileBloc.add(UpdateFirstNameFocus(_firstNameFocusNode.hasFocus));
+    });
+
+    _lastNameFocusNode.addListener(() {
+      _profileBloc.add(UpdateLastNameFocus(_lastNameFocusNode.hasFocus));
+    });
+
+    _emailFocusNode.addListener(() {
+      _profileBloc.add(UpdateEmailFocus(_emailFocusNode.hasFocus));
+    });
   }
 
   @override
@@ -52,54 +67,61 @@ class _ProfilePageState extends State<ProfilePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Column(
-          children: [
-            NameField(
-              label: LocaleKeys.text_field_labels_first_name,
-              controller: _firstNameController,
-              focusNode: _firstNameFocusNode,
-              onSuffixTapped: () {
-                _firstNameController.clear();
-                _firstNameFocusNode.requestFocus();
-                setState(() {});
-              },
-              onChanged: (text) {
-                setState(() {});
-              },
-              onSubmitted: (text) {},
-              errorText: null,
-            ),
-            NameField(
-              label: LocaleKeys.text_field_labels_last_name,
-              controller: _lastNameController,
-              focusNode: _lastNameFocusNode,
-              onSuffixTapped: () {
-                _lastNameController.clear();
-                _lastNameFocusNode.requestFocus();
-                setState(() {});
-              },
-              onChanged: (text) {
-                setState(() {});
-              },
-              onSubmitted: (text) {},
-              errorText: null,
-            ),
-            EmailField(
-              controller: _emailController,
-              focusNode: _emailFocusNode,
-              onSuffixTapped: () {
-                _emailController.clear();
-                _emailFocusNode.requestFocus();
-                setState(() {});
-              },
-              onChanged: (text) {
-                setState(() {});
-              },
-              onSubmitted: (text) {},
-              errorText: null,
-            ),
-          ],
-        ).childrenPadding(const EdgeInsets.only(top: 16, left: 16, right: 16)),
+        BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: NameField.firstName(
+                    controller: _firstNameController,
+                    focusNode: _firstNameFocusNode,
+                    onSuffixTapped: () => _profileBloc.add(UpdateFirstNameText('')),
+                    onChanged: (text) => _profileBloc.add(UpdateFirstNameText(text)),
+                    errorText: state.firstNameError,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: NameField.lastName(
+                    controller: _lastNameController,
+                    focusNode: _lastNameFocusNode,
+                    onSuffixTapped: () => _profileBloc.add(UpdateLastNameText('')),
+                    onChanged: (text) => _profileBloc.add(UpdateLastNameText(text)),
+                    errorText: state.lastNameError,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: EmailField(
+                    controller: _emailController,
+                    focusNode: _emailFocusNode,
+                    onSuffixTapped: () => _profileBloc.add(UpdateEmailText('')),
+                    onChanged: (text) => _profileBloc.add(UpdateEmailText(text)),
+                    errorText: state.emailError,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 16, right: 16, top: 32),
+                  child: AppElevatedButton(
+                    onPressed: () {
+                      if (state.canUpdate) {
+                        _profileBloc.add(UpdateButtonPressed());
+                      } else {
+                        _profileBloc.add(ShowRequiredFields());
+                      }
+                    },
+                    label: 'Update profile',
+                    buttonState: state.isUpdating
+                        ? ButtonState.busy
+                        : ButtonState.enabled,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: 16, bottom: 16),

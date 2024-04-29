@@ -19,30 +19,30 @@ void main() {
       test(
         'WHEN an e-mail address is not entered',
         () {
-          _verifyValidationResult(null, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(null, isPressed: false, hasFocus: false, error: null);
-          _verifyValidationResult(emptyEmail, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(emptyEmail, isPressed: false, hasFocus: false, error: null);
+          _verifyValidationResult(hasFocus: true);
+          _verifyValidationResult(error: null);
+          _verifyValidationResult(email: emptyEmail, hasFocus: true);
+          _verifyValidationResult(email: emptyEmail);
         },
       );
 
       test(
         'WHEN an e-mail address is partially entered',
         () {
-          _verifyValidationResult(notValidEmail1, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(notValidEmail2, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(notValidEmail3, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(notValidEmail4, isPressed: false, hasFocus: true, error: null);
+          _verifyValidationResult(email: notValidEmail1, hasFocus: true);
+          _verifyValidationResult(email: notValidEmail2, hasFocus: true);
+          _verifyValidationResult(email: notValidEmail3, hasFocus: true);
+          _verifyValidationResult(email: notValidEmail4, hasFocus: true);
         },
       );
 
       test(
         'WHEN a valid e-mail address is entered',
         () {
-          _verifyValidationResult(validEmail, isPressed: true, hasFocus: true, error: null);
-          _verifyValidationResult(validEmail, isPressed: true, hasFocus: false, error: null);
-          _verifyValidationResult(validEmail, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(validEmail, isPressed: false, hasFocus: false, error: null);
+          _verifyValidationResult(email: validEmail, isPressed: true, hasFocus: true);
+          _verifyValidationResult(email: validEmail, isPressed: true);
+          _verifyValidationResult(email: validEmail, hasFocus: true);
+          _verifyValidationResult(email: validEmail);
         },
       );
     },
@@ -54,10 +54,10 @@ void main() {
       test(
         'WHEN an e-mail address is not entered',
         () {
-          _verifyValidationResult(null, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(null, isPressed: true, hasFocus: false, error: emptyResult);
-          _verifyValidationResult(emptyEmail, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(emptyEmail, isPressed: true, hasFocus: false, error: emptyResult);
+          _verifyValidationResult(isPressed: true, hasFocus: true, error: emptyResult);
+          _verifyValidationResult(isPressed: true, error: emptyResult);
+          _verifyValidationResult(email: emptyEmail, isPressed: true, hasFocus: true, error: emptyResult);
+          _verifyValidationResult(email: emptyEmail, isPressed: true, error: emptyResult);
         },
       );
     },
@@ -69,31 +69,31 @@ void main() {
       test(
         'WHEN an e-mail address is partially entered',
         () {
-          _verifyValidationResult(notValidEmail1, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(notValidEmail1, isPressed: true, hasFocus: false, error: notValidResult);
-          _verifyValidationResult(notValidEmail1, isPressed: false, hasFocus: false, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail1, isPressed: true, hasFocus: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail1, isPressed: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail1, error: notValidResult);
 
-          _verifyValidationResult(notValidEmail2, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(notValidEmail2, isPressed: true, hasFocus: false, error: notValidResult);
-          _verifyValidationResult(notValidEmail2, isPressed: false, hasFocus: false, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail2, isPressed: true, hasFocus: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail2, isPressed: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail2, error: notValidResult);
 
-          _verifyValidationResult(notValidEmail3, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(notValidEmail3, isPressed: true, hasFocus: false, error: notValidResult);
-          _verifyValidationResult(notValidEmail3, isPressed: false, hasFocus: false, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail3, isPressed: true, hasFocus: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail3, isPressed: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail3, error: notValidResult);
 
-          _verifyValidationResult(notValidEmail4, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(notValidEmail4, isPressed: true, hasFocus: false, error: notValidResult);
-          _verifyValidationResult(notValidEmail4, isPressed: false, hasFocus: false, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail4, isPressed: true, hasFocus: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail4, isPressed: true, error: notValidResult);
+          _verifyValidationResult(email: notValidEmail4, error: notValidResult);
         },
       );
     },
   );
 }
 
-void _verifyValidationResult(
-  String? email, {
-  required bool hasFocus,
-  required bool isPressed,
+void _verifyValidationResult({
+  String? email,
+  bool hasFocus = false,
+  bool isPressed = false,
   String? error,
 }) {
   expect(

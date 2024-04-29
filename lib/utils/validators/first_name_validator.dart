@@ -5,7 +5,11 @@ import 'package:injectable/injectable.dart';
 class FirstNameValidator {
   const FirstNameValidator();
 
-  String? call({required String? name, required bool hasFocus, required bool isPressed}) {
+  String? call({
+    required String? name,
+    bool hasFocus = false,
+    bool isPressed = false,
+  }) {
     final trimmedName = name?.trim() ?? '';
 
     if (trimmedName.isEmpty) {
