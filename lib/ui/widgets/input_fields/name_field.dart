@@ -1,6 +1,7 @@
 import 'package:blueprint/ui/widgets/buttons/suffix_icon_button.dart';
 import 'package:blueprint/ui/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class NameField extends StatelessWidget {
   const NameField({
@@ -29,6 +30,10 @@ class NameField extends StatelessWidget {
       focusNode: focusNode,
       autocorrect: false,
       maxLength: 64,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]| ')),
+        FilteringTextInputFormatter.deny('  '),
+      ],
       decoration: InputDecoration(
         errorText: errorText,
         prefixIcon: const Icon(Icons.person_outlined),
