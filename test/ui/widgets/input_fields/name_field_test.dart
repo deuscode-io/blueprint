@@ -69,7 +69,7 @@ void main() {
     'GIVEN $NameField to test formatting',
     () {
       testWidgets(
-        'WHEN entered a text',
+        'WHEN text is pasted',
         (tester) async {
           await tester.appPumpWidget(onChanged: (text) => _value = text);
 

@@ -24,6 +24,7 @@ class AppElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: _onPressed(),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Opacity(
             opacity: _labelOpacity,

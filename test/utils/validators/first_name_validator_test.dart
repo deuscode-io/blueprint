@@ -16,27 +16,27 @@ void main() {
       test(
         'WHEN a first name is not entered',
         () {
-          _verifyValidationResult(null, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(null, isPressed: false, hasFocus: false, error: null);
-          _verifyValidationResult(emptyName, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(emptyName, isPressed: false, hasFocus: false, error: null);
+          _verifyValidationResult(hasFocus: true);
+          _verifyValidationResult();
+          _verifyValidationResult(name: emptyName, hasFocus: true);
+          _verifyValidationResult(name: emptyName);
         },
       );
 
       test(
         'WHEN a first name is partially entered',
         () {
-          _verifyValidationResult(notValidName, isPressed: false, hasFocus: true, error: null);
+          _verifyValidationResult(name: notValidName, hasFocus: true);
         },
       );
 
       test(
         'WHEN a valid e-mail address is entered',
         () {
-          _verifyValidationResult(validName, isPressed: true, hasFocus: true, error: null);
-          _verifyValidationResult(validName, isPressed: true, hasFocus: false, error: null);
-          _verifyValidationResult(validName, isPressed: false, hasFocus: true, error: null);
-          _verifyValidationResult(validName, isPressed: false, hasFocus: false, error: null);
+          _verifyValidationResult(name: validName, isPressed: true, hasFocus: true);
+          _verifyValidationResult(name: validName, isPressed: true);
+          _verifyValidationResult(name: validName, hasFocus: true);
+          _verifyValidationResult(name: validName);
         },
       );
     },
@@ -48,10 +48,10 @@ void main() {
       test(
         'WHEN a first name is not entered',
         () {
-          _verifyValidationResult(null, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(null, isPressed: true, hasFocus: false, error: emptyResult);
-          _verifyValidationResult(emptyName, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(emptyName, isPressed: true, hasFocus: false, error: emptyResult);
+          _verifyValidationResult(isPressed: true, hasFocus: true, error: emptyResult);
+          _verifyValidationResult(isPressed: true, error: emptyResult);
+          _verifyValidationResult(name: emptyName, isPressed: true, hasFocus: true, error: emptyResult);
+          _verifyValidationResult(name: emptyName, isPressed: true, error: emptyResult);
         },
       );
     },
@@ -63,19 +63,19 @@ void main() {
       test(
         'WHEN a first name is partially entered',
         () {
-          _verifyValidationResult(notValidName, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(notValidName, isPressed: true, hasFocus: false, error: notValidResult);
-          _verifyValidationResult(notValidName, isPressed: false, hasFocus: false, error: notValidResult);
+          _verifyValidationResult(name: notValidName, isPressed: true, hasFocus: true, error: notValidResult);
+          _verifyValidationResult(name: notValidName, isPressed: true, error: notValidResult);
+          _verifyValidationResult(name: notValidName, error: notValidResult);
         },
       );
     },
   );
 }
 
-void _verifyValidationResult(
-  String? name, {
-  required bool hasFocus,
-  required bool isPressed,
+void _verifyValidationResult({
+  String? name,
+  bool hasFocus = false,
+  bool isPressed = false,
   String? error,
 }) {
   expect(

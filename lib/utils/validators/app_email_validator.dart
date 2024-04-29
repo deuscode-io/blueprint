@@ -6,7 +6,11 @@ import 'package:injectable/injectable.dart';
 class AppEmailValidator {
   const AppEmailValidator();
 
-  String? call({required String? email, required bool hasFocus, required bool isPressed}) {
+  String? call({
+    required String? email,
+    bool hasFocus = false,
+    bool isPressed = false,
+  }) {
     final trimmedEmail = email?.trim() ?? '';
 
     if (trimmedEmail.isEmpty) {

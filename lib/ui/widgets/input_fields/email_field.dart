@@ -1,16 +1,20 @@
+import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/i18n/translate.dart';
 import 'package:blueprint/ui/widgets/buttons/suffix_icon_button.dart';
 import 'package:blueprint/ui/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';
 
 class EmailField extends StatelessWidget {
+  static final Translate _translate = Injector.get();
+
   const EmailField({
     super.key,
     required this.controller,
     required this.focusNode,
     required this.onSuffixTapped,
     required this.onChanged,
-    required this.onSubmitted,
+    this.onSubmitted,
     required this.errorText,
   });
 
@@ -19,7 +23,7 @@ class EmailField extends StatelessWidget {
   final FocusNode focusNode;
   final VoidCallback onSuffixTapped;
   final ValueChanged<String> onChanged;
-  final ValueChanged<String> onSubmitted;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +32,25 @@ class EmailField extends StatelessWidget {
       focusNode: focusNode,
       maxLength: 128,
       decoration: InputDecoration(
-        errorText: errorText,
+        errorText: errorText == null ? null : _translate(errorText!),
         prefixIcon: const Icon(Icons.email_outlined),
         suffixIcon: controller.text.trim().isEmpty
             ? null
             : SuffixIconButton(
-                onTap: onSuffixTapped,
+                onTap: () {
+                  controller.clear();
+                  if (!focusNode.hasFocus) {
+                    focusNode.requestFocus();
+                  }
+                  onSuffixTapped.call();
+                },
                 child: const Icon(Icons.clear),
               ),
         label: const TranslatedText(LocaleKeys.text_field_labels_email),
         counterText: '',
       ),
       onChanged: (text) => onChanged(text.trim()),
-      onSubmitted: (text) => onSubmitted(text.trim()),
+      onSubmitted: (text) => onSubmitted?.call(text.trim()),
     );
   }
 }
