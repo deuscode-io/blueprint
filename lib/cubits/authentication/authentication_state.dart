@@ -1,22 +1,19 @@
 part of 'authentication_cubit.dart';
 
-@freezed
-class AuthenticationState with _$AuthenticationState {
-  final String authToken = '';
+sealed class AuthenticationState {}
 
-  AuthenticationState._();
+class Loading implements AuthenticationState {}
 
-  factory AuthenticationState.loading() = _Loading;
-  factory AuthenticationState.notAuthenticated() = _NotAuthenticated;
-  factory AuthenticationState.authenticated({required String authToken}) =
-  _Authenticated;
-  factory AuthenticationState.loadingError(String error) = _LoadingError;
+class NotAuthenticated implements AuthenticationState {}
 
-  bool get isLoading => maybeWhen(loading: () => true, orElse: () => false);
+class Authenticated implements AuthenticationState {
+  final String authToken;
 
-  bool get isAuthenticated =>
-      maybeWhen(authenticated: (_) => true, orElse: () => false);
+  Authenticated(this.authToken);
+}
 
-  bool get isNotAuthenticated =>
-      maybeWhen(authenticated: (_) => false, orElse: () => true);
+class LoadingError implements AuthenticationState {
+  final String error;
+
+  LoadingError(this.error);
 }

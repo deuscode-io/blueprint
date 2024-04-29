@@ -12,7 +12,7 @@ final _saveAuthTokenRepo = MockSaveAuthTokenRepo();
 
 void main() {
   setUp(() {
-    when(_setAuthToken).thenReturn(null);
+    when(_setAuthenticated).thenReturn(null);
     when(_setNotAuthenticated).thenReturn(null);
     when(_saveNotEmptyToken).thenAnswer(Future.value);
     when(_saveEmptyToken).thenAnswer(Future.value);
@@ -37,7 +37,7 @@ void main() {
             authenticationCubit: _authenticationCubit,
           )(_notEmptyToken);
 
-          verify(_setAuthToken).called(1);
+          verify(_setAuthenticated).called(1);
           verify(_saveNotEmptyToken).called(1);
         },
       );
@@ -65,6 +65,6 @@ void _saveNotEmptyToken() => _saveAuthTokenRepo(_notEmptyToken);
 
 void _saveEmptyToken() => _saveAuthTokenRepo(_emptyToken);
 
-void _setAuthToken() => _authenticationCubit.setAuthToken(_notEmptyToken);
+void _setAuthenticated() => _authenticationCubit.setAuthenticated(_notEmptyToken);
 
 void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();

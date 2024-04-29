@@ -55,6 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
         Column(
           children: [
             NameField(
+              label: LocaleKeys.text_field_labels_first_name,
               controller: _firstNameController,
               focusNode: _firstNameFocusNode,
               onSuffixTapped: () {
@@ -67,9 +68,9 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               onSubmitted: (text) {},
               errorText: null,
-              label: LocaleKeys.text_field_labels_first_name,
             ),
             NameField(
+              label: LocaleKeys.text_field_labels_last_name,
               controller: _lastNameController,
               focusNode: _lastNameFocusNode,
               onSuffixTapped: () {
@@ -82,7 +83,6 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               onSubmitted: (text) {},
               errorText: null,
-              label: LocaleKeys.text_field_labels_last_name,
             ),
             EmailField(
               controller: _emailController,

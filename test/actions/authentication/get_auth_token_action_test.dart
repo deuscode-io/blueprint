@@ -5,6 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import '../../test_utils/mocks/library_mocks.dart';
 
 const _authTokenFixture = 'some auth token';
+final _exception = Exception('some error');
 final _authenticationCubit = MockAuthenticationCubit();
 final _getAuthTokenRepo = MockGetAuthTokenRepo();
 
@@ -14,6 +15,7 @@ void main() {
     when(_setLoading).thenReturn(null);
     when(_setAuthenticated).thenReturn(null);
     when(_setNotAuthenticated).thenReturn(null);
+    when(_setLoadingError).thenReturn(null);
   });
 
   tearDown(() {
@@ -57,6 +59,18 @@ void main() {
           verify(_setAuthenticated).called(1);
         },
       );
+
+      test(
+        'WHEN there is an exception '
+        'THEN sets loading error state ',
+        () async {
+          when(_getAuthTokenRepo.call).thenThrow(_exception);
+
+          await _getAuthTokenActionCall();
+
+          verify(_setLoadingError).called(1);
+        },
+      );
     },
   );
 }
@@ -70,6 +84,8 @@ Future<void> _getAuthTokenActionCall() async {
 
 void _setLoading() => _authenticationCubit.setLoading();
 
-void _setAuthenticated() => _authenticationCubit.setAuthToken(_authTokenFixture);
+void _setAuthenticated() => _authenticationCubit.setAuthenticated(_authTokenFixture);
 
 void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();
+
+void _setLoadingError() => _authenticationCubit.setLoadingError(_exception.toString());

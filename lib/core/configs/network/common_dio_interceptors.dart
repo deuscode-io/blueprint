@@ -7,8 +7,11 @@ class CommonDioInterceptors {
     InterceptorsWrapper(
       onRequest: (options, handler) {
         final authenticationCubit = Injector.get<AuthenticationCubit>();
-        final authToken = authenticationCubit.state.authToken;
-        final bearerHeader = authToken.isEmpty ? null : 'Bearer $authToken';
+
+        final bearerHeader = switch (authenticationCubit.state) {
+          final Authenticated auth => 'Bearer ${auth.authToken}',
+          _ => null,
+        };
 
         options.headers['Authorization'] = bearerHeader;
 
