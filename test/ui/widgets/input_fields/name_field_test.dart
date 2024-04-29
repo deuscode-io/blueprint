@@ -66,7 +66,23 @@ void main() {
   );
 
   group(
-    'GIVEN $NameField to appearance',
+    'GIVEN $NameField to test formatting',
+    () {
+      testWidgets(
+        'WHEN entered a text',
+        (tester) async {
+          await tester.appPumpWidget(onChanged: (text) => _value = text);
+
+          await tester.enterTextByType(type: TextField, text: '1A 2B  3C .a?b@c       CAT Do5na@ld      E!     ');
+
+          expect(_value, 'A BC abc CAT DonaldE');
+        },
+      );
+    },
+  );
+
+  group(
+    'GIVEN $NameField to test appearance',
     () {
       testWidgets(
         'WHEN pumped '
