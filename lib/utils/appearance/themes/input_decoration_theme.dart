@@ -1,4 +1,4 @@
-import 'package:blueprint/utils/appearance/appearance_library.dart';
+import 'package:blueprint/utils/appearance/library_appearance.dart';
 import 'package:flutter/material.dart';
 
 InputDecorationTheme get inputDecorationTheme {

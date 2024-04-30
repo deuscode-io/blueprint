@@ -13,7 +13,6 @@ class NameField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.focusNode,
-    required this.onSuffixTapped,
     required this.onChanged,
     required this.errorText,
     required this.label,
@@ -23,7 +22,6 @@ class NameField extends StatelessWidget {
   final String? errorText;
   final TextEditingController controller;
   final FocusNode focusNode;
-  final VoidCallback onSuffixTapped;
   final ValueChanged<String> onChanged;
   final String label;
   final ValueChanged<String>? onSubmitted;
@@ -33,14 +31,12 @@ class NameField extends StatelessWidget {
     String? errorText,
     required TextEditingController controller,
     required FocusNode focusNode,
-    required VoidCallback onSuffixTapped,
     required ValueChanged<String> onChanged,
     ValueChanged<String>? onSubmitted,
   }) {
     return NameField(
       controller: controller,
       focusNode: focusNode,
-      onSuffixTapped: onSuffixTapped,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       errorText: errorText,
@@ -53,14 +49,12 @@ class NameField extends StatelessWidget {
     String? errorText,
     required TextEditingController controller,
     required FocusNode focusNode,
-    required VoidCallback onSuffixTapped,
     required ValueChanged<String> onChanged,
     ValueChanged<String>? onSubmitted,
   }) {
     return NameField(
       controller: controller,
       focusNode: focusNode,
-      onSuffixTapped: onSuffixTapped,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       errorText: errorText,
@@ -93,7 +87,7 @@ class NameField extends StatelessWidget {
                   if (!focusNode.hasFocus) {
                     focusNode.requestFocus();
                   }
-                  onSuffixTapped.call();
+                  onChanged.call('');
                 },
                 child: const Icon(Icons.clear),
               ),

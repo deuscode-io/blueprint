@@ -1,4 +1,4 @@
-library appearance_library;
+library appearance;
 
 export 'colors/app_colors_dark.dart';
 export 'colors/app_colors_light.dart';

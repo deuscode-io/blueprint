@@ -6,6 +6,7 @@ import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/ui/widgets/buttons/app_elevated_button.dart';
 import 'package:blueprint/ui/widgets/input_fields/email_field.dart';
 import 'package:blueprint/ui/widgets/input_fields/name_field.dart';
+import 'package:blueprint/utils/mixins/library_mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,49 +18,24 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfilePage> with TextEditingControllersMixin, FocusNodesMixin {
   final SetAuthTokenAction _setAuthTokenAction = Injector.get();
   final ProfileBloc _profileBloc = Injector.get();
-
-  late TextEditingController _firstNameController;
-  late TextEditingController _lastNameController;
-  late TextEditingController _emailController;
-  late FocusNode _firstNameFocusNode;
-  late FocusNode _lastNameFocusNode;
-  late FocusNode _emailFocusNode;
 
   @override
   void initState() {
     super.initState();
-    _firstNameController = TextEditingController();
-    _lastNameController = TextEditingController();
-    _emailController = TextEditingController();
-    _firstNameFocusNode = FocusNode();
-    _lastNameFocusNode = FocusNode();
-    _emailFocusNode = FocusNode();
-
-    _firstNameFocusNode.addListener(() {
-      _profileBloc.add(UpdateFirstNameFocus(_firstNameFocusNode.hasFocus));
+    firstNameFocusNode.addListener(() {
+      _profileBloc.add(UpdateFirstNameFocus(firstNameFocusNode.hasFocus));
     });
 
-    _lastNameFocusNode.addListener(() {
-      _profileBloc.add(UpdateLastNameFocus(_lastNameFocusNode.hasFocus));
+    lastNameFocusNode.addListener(() {
+      _profileBloc.add(UpdateLastNameFocus(lastNameFocusNode.hasFocus));
     });
 
-    _emailFocusNode.addListener(() {
-      _profileBloc.add(UpdateEmailFocus(_emailFocusNode.hasFocus));
+    emailFocusNode.addListener(() {
+      _profileBloc.add(UpdateEmailFocus(emailFocusNode.hasFocus));
     });
-  }
-
-  @override
-  void dispose() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _emailController.dispose();
-    _firstNameFocusNode.dispose();
-    _lastNameFocusNode.dispose();
-    _emailFocusNode.dispose();
-    super.dispose();
   }
 
   @override
@@ -75,9 +51,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                   child: NameField.firstName(
-                    controller: _firstNameController,
-                    focusNode: _firstNameFocusNode,
-                    onSuffixTapped: () => _profileBloc.add(UpdateFirstNameText('')),
+                    controller: firstNameController,
+                    focusNode: firstNameFocusNode,
                     onChanged: (text) => _profileBloc.add(UpdateFirstNameText(text)),
                     errorText: state.firstNameError,
                   ),
@@ -85,9 +60,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                   child: NameField.lastName(
-                    controller: _lastNameController,
-                    focusNode: _lastNameFocusNode,
-                    onSuffixTapped: () => _profileBloc.add(UpdateLastNameText('')),
+                    controller: lastNameController,
+                    focusNode: lastNameFocusNode,
                     onChanged: (text) => _profileBloc.add(UpdateLastNameText(text)),
                     errorText: state.lastNameError,
                   ),
@@ -95,9 +69,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                   child: EmailField(
-                    controller: _emailController,
-                    focusNode: _emailFocusNode,
-                    onSuffixTapped: () => _profileBloc.add(UpdateEmailText('')),
+                    controller: emailController,
+                    focusNode: emailFocusNode,
                     onChanged: (text) => _profileBloc.add(UpdateEmailText(text)),
                     errorText: state.emailError,
                   ),
@@ -113,9 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       }
                     },
                     label: 'Update profile',
-                    buttonState: state.isUpdating
-                        ? ButtonState.busy
-                        : ButtonState.enabled,
+                    buttonState: state.isUpdating ? ButtonState.busy : ButtonState.enabled,
                   ),
                 ),
               ],
