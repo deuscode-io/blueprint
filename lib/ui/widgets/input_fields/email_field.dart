@@ -12,7 +12,6 @@ class EmailField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.focusNode,
-    required this.onSuffixTapped,
     required this.onChanged,
     this.onSubmitted,
     required this.errorText,
@@ -21,7 +20,6 @@ class EmailField extends StatelessWidget {
   final String? errorText;
   final TextEditingController controller;
   final FocusNode focusNode;
-  final VoidCallback onSuffixTapped;
   final ValueChanged<String> onChanged;
   final ValueChanged<String>? onSubmitted;
 
@@ -42,7 +40,7 @@ class EmailField extends StatelessWidget {
                   if (!focusNode.hasFocus) {
                     focusNode.requestFocus();
                   }
-                  onSuffixTapped.call();
+                  onChanged.call('');
                 },
                 child: const Icon(Icons.clear),
               ),

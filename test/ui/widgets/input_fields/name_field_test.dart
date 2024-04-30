@@ -43,7 +43,7 @@ void main() {
         'WHEN tapped on suffix button',
         (tester) async {
           _controller.text = _name;
-          await tester.appPumpWidget(onSuffixTapped: () => _value = _name);
+          await tester.appPumpWidget(onChanged: (_) => _value = _name);
 
           await tester.tapByType(type: SuffixIconButton);
 
@@ -122,7 +122,6 @@ NameField _buildNameField(String? errorText) {
   return NameField(
     controller: _controller,
     focusNode: FocusNode(),
-    onSuffixTapped: () {},
     onChanged: (_) {},
     onSubmitted: (_) {},
     errorText: errorText,
@@ -132,7 +131,6 @@ NameField _buildNameField(String? errorText) {
 
 extension on WidgetTester {
   Future<void> appPumpWidget({
-    VoidCallback? onSuffixTapped,
     ValueChanged<String>? onChanged,
     ValueChanged<String>? onSubmitted,
     String? errorText,
@@ -142,7 +140,6 @@ extension on WidgetTester {
       child: NameField(
         controller: _controller,
         focusNode: FocusNode(),
-        onSuffixTapped: onSuffixTapped ?? () {},
         onChanged: onChanged ?? (_) {},
         onSubmitted: onSubmitted ?? (_) {},
         errorText: errorText,
