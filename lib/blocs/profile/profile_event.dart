@@ -36,12 +36,28 @@ class UpdateEmailFocus extends ProfileEvent {
   UpdateEmailFocus(this.hasFocus);
 }
 
-class UpdateButtonPressed extends ProfileEvent {
+class UpdateCountry extends ProfileEvent {
+  final String country;
 
+  UpdateCountry(this.country);
+}
+
+class UpdatePhoneNumberText extends ProfileEvent {
+  final String text;
+
+  UpdatePhoneNumberText(this.text);
+}
+
+class UpdatePhoneNumberFocus extends ProfileEvent {
+  final bool hasFocus;
+
+  UpdatePhoneNumberFocus(this.hasFocus);
+}
+
+class UpdateButtonPressed extends ProfileEvent {
   UpdateButtonPressed();
 }
 
 class ShowRequiredFields extends ProfileEvent {
-
   ShowRequiredFields();
 }

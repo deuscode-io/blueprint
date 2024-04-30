@@ -4,8 +4,10 @@ import 'package:blueprint/blocs/profile/profile_event.dart';
 import 'package:blueprint/blocs/profile/profile_state.dart';
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/ui/widgets/buttons/app_elevated_button.dart';
+import 'package:blueprint/ui/widgets/input_fields/country_code_field.dart';
 import 'package:blueprint/ui/widgets/input_fields/email_field.dart';
 import 'package:blueprint/ui/widgets/input_fields/name_field.dart';
+import 'package:blueprint/ui/widgets/input_fields/phone_number_field.dart';
 import 'package:blueprint/utils/mixins/library_mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +37,10 @@ class _ProfilePageState extends State<ProfilePage> with TextEditingControllersMi
 
     emailFocusNode.addListener(() {
       _profileBloc.add(UpdateEmailFocus(emailFocusNode.hasFocus));
+    });
+
+    phoneNumberFocusNode.addListener(() {
+      _profileBloc.add(UpdatePhoneNumberFocus(phoneNumberFocusNode.hasFocus));
     });
   }
 
@@ -73,6 +79,32 @@ class _ProfilePageState extends State<ProfilePage> with TextEditingControllersMi
                     focusNode: emailFocusNode,
                     onChanged: (text) => _profileBloc.add(UpdateEmailText(text)),
                     errorText: state.emailError,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 50,
+                        child: CountryCodeField(
+                          controller: countryCodeController,
+                          onChanged: (text) => _profileBloc.add(UpdateCountryCodeText(text)),
+                          errorText: state.countryCodeError,
+                          currentCountry: state.countryCode,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        flex: 100,
+                        child: PhoneNumberField(
+                          controller: phoneNumberController,
+                          focusNode: phoneNumberFocusNode,
+                          onChanged: (text) => _profileBloc.add(UpdatePhoneNumberText(text)),
+                          errorText: state.phoneNumberError,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(

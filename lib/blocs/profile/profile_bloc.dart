@@ -66,6 +66,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       );
     });
 
+    on<UpdateCountry>((event, emit) {});
+
+    on<UpdatePhoneNumberText>((event, emit) {});
+
+    on<UpdatePhoneNumberFocus>((event, emit) {});
+
     on<UpdateButtonPressed>((event, emit) async {
       emit(state.copyWith(isUpdating: true));
       await Future.delayed(const Duration(seconds: 4));

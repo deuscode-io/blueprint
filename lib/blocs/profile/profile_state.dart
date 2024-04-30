@@ -7,19 +7,27 @@ class ProfileState {
   final String firstName;
   final String lastName;
   final String email;
+  final String countryCode;
+  final String phoneNumber;
   final String? firstNameError;
   final String? lastNameError;
   final String? emailError;
+  final String? countryCodeError;
+  final String? phoneNumberError;
   final bool isUpdating;
 
   ProfileState({
     this.firstName = '',
     this.lastName = '',
     this.email = '',
+    this.countryCode = '',
+    this.phoneNumber = '',
     this.isUpdating = false,
     this.firstNameError,
     this.lastNameError,
     this.emailError,
+    this.countryCodeError,
+    this.phoneNumberError,
   });
 
   bool get canUpdate {
@@ -28,6 +36,10 @@ class ProfileState {
         lastName.isNotEmpty &&
         lastNameError == null &&
         email.isNotEmpty &&
-        emailError == null;
+        emailError == null &&
+        countryCode.isNotEmpty &&
+        countryCodeError == null &&
+        phoneNumber.isNotEmpty &&
+        phoneNumberError == null;
   }
 }

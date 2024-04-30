@@ -4,6 +4,7 @@ mixin FocusNodesMixin<T extends StatefulWidget> on State<T> {
   late FocusNode firstNameFocusNode;
   late FocusNode lastNameFocusNode;
   late FocusNode emailFocusNode;
+  late FocusNode phoneNumberFocusNode;
 
   @override
   void initState() {
@@ -11,6 +12,7 @@ mixin FocusNodesMixin<T extends StatefulWidget> on State<T> {
     firstNameFocusNode = FocusNode();
     lastNameFocusNode = FocusNode();
     emailFocusNode = FocusNode();
+    phoneNumberFocusNode = FocusNode();
   }
 
   @override
@@ -18,6 +20,7 @@ mixin FocusNodesMixin<T extends StatefulWidget> on State<T> {
     firstNameFocusNode.dispose();
     lastNameFocusNode.dispose();
     emailFocusNode.dispose();
+    phoneNumberFocusNode.dispose();
     super.dispose();
   }
 }
