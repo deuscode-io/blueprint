@@ -24,7 +24,7 @@ class GetAuthTokenAction {
         authenticationCubit.setAuthenticated(authToken);
       }
     } on Exception catch (e) {
-      authenticationCubit.setLoadingError(e.toString());
+      authenticationCubit.setFailed(e.toString());
     }
   }
 }

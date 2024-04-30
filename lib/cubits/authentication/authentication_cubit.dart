@@ -5,21 +5,21 @@ part 'authentication_state.dart';
 
 @singleton
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  AuthenticationCubit() : super(NotAuthenticated());
+  AuthenticationCubit() : super(AuthenticationStateNotAuthenticated());
 
   void setLoading() {
-    emit(Loading());
+    emit(AuthenticationStateLoading());
   }
 
   void setAuthenticated(String authToken) {
-    emit(Authenticated(authToken));
+    emit(AuthenticationStateAuthenticated(authToken));
   }
 
   void setNotAuthenticated() {
-    emit(NotAuthenticated());
+    emit(AuthenticationStateNotAuthenticated());
   }
 
-  void setLoadingError(String error) {
-    emit(LoadingError(error));
+  void setFailed(String error) {
+    emit(AuthenticationStateFailed(error));
   }
 }

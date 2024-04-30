@@ -2,18 +2,18 @@ part of 'authentication_cubit.dart';
 
 sealed class AuthenticationState {}
 
-class Loading implements AuthenticationState {}
+final class AuthenticationStateLoading implements AuthenticationState {}
 
-class NotAuthenticated implements AuthenticationState {}
+final class AuthenticationStateNotAuthenticated implements AuthenticationState {}
 
-class Authenticated implements AuthenticationState {
+final class AuthenticationStateAuthenticated implements AuthenticationState {
   final String authToken;
 
-  Authenticated(this.authToken);
+  AuthenticationStateAuthenticated(this.authToken);
 }
 
-class LoadingError implements AuthenticationState {
-  final String error;
+final class AuthenticationStateFailed implements AuthenticationState {
+  final String failure;
 
-  LoadingError(this.error);
+  AuthenticationStateFailed(this.failure);
 }

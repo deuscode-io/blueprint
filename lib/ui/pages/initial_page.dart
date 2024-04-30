@@ -31,12 +31,12 @@ class _InitialPageState extends State<InitialPage> {
       body: Center(
         child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
           listener: (context, state) {
-            if (state is Authenticated) context.go('/notes');
+            if (state is AuthenticationStateAuthenticated) context.go('/notes');
           },
           builder: (context, state) {
             return switch (state) {
-              Loading _ => const ThreeDotsIndicator(),
-              Authenticated _ => const SizedBox(),
+              AuthenticationStateLoading _ => const ThreeDotsIndicator(),
+              AuthenticationStateAuthenticated _ => const SizedBox(),
               _ => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

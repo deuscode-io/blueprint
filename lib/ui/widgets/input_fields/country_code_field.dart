@@ -1,17 +1,20 @@
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/models/profile/country.dart';
 import 'package:blueprint/ui/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';
 
 class CountryCodeField extends StatelessWidget {
   const CountryCodeField({
     super.key,
-    required this.currentCountry,
+    required this.country,
+    required this.countries,
     required this.controller,
     required this.onChanged,
     required this.errorText,
   });
 
-  final String? currentCountry;
+  final Country? country;
+  final List<Country> countries;
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
   final String? errorText;
@@ -32,7 +35,7 @@ class CountryCodeField extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () async {
-              final result = await showModalBottomSheet(
+              await showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
                 useRootNavigator: true,
@@ -40,11 +43,6 @@ class CountryCodeField extends StatelessWidget {
                   return const SizedBox(height: 128, width: double.infinity);
                 },
               );
-              if (context.mounted) {
-                print('context.mounted');
-              } else {
-                print('!context.mounted');
-              }
             },
             child: Container(
               color: Colors.transparent,

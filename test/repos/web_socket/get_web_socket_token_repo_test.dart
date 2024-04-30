@@ -5,7 +5,6 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../test_utils/mocks/library_mocks.dart';
 
-
 const _accountIdFixture = 'some account id';
 const _websocketsToken = 'some token';
 final _exception = Exception('Some error');
@@ -51,5 +50,5 @@ Future<String> _getWebSocketTokenRepoCall() {
 }
 
 Future<Response> _apiCall() {
-  return _httpClient.post('v1.0/terminal/accounts/$_accountIdFixture/token');
+  return _httpClient.post('v1.0/websocket/$_accountIdFixture/token');
 }

@@ -1,13 +1,14 @@
+import 'package:blueprint/models/profile/country.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
 part 'profile_state.g.dart';
 
 @CopyWith(copyWithNull: true)
-class ProfileState {
+final class ProfileState {
   final String firstName;
   final String lastName;
   final String email;
-  final String countryCode;
+  final Country? country;
   final String phoneNumber;
   final String? firstNameError;
   final String? lastNameError;
@@ -20,7 +21,7 @@ class ProfileState {
     this.firstName = '',
     this.lastName = '',
     this.email = '',
-    this.countryCode = '',
+    this.country,
     this.phoneNumber = '',
     this.isUpdating = false,
     this.firstNameError,
@@ -37,7 +38,7 @@ class ProfileState {
         lastNameError == null &&
         email.isNotEmpty &&
         emailError == null &&
-        countryCode.isNotEmpty &&
+        country != null &&
         countryCodeError == null &&
         phoneNumber.isNotEmpty &&
         phoneNumberError == null;

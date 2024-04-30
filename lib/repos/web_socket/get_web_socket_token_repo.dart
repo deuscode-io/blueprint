@@ -9,7 +9,7 @@ class GetWebSocketTokenRepo {
 
   Future<String> call(String accountId) async {
     final response = await httpClient.post(
-      'v1.0/terminal/accounts/$accountId/token',
+      'v1.0/websocket/$accountId/token',
     );
 
     return response.data;

@@ -15,7 +15,7 @@ void main() {
     when(_setLoading).thenReturn(null);
     when(_setAuthenticated).thenReturn(null);
     when(_setNotAuthenticated).thenReturn(null);
-    when(_setLoadingError).thenReturn(null);
+    when(_setFailed).thenReturn(null);
   });
 
   tearDown(() {
@@ -68,7 +68,7 @@ void main() {
 
           await _getAuthTokenActionCall();
 
-          verify(_setLoadingError).called(1);
+          verify(_setFailed).called(1);
         },
       );
     },
@@ -88,4 +88,4 @@ void _setAuthenticated() => _authenticationCubit.setAuthenticated(_authTokenFixt
 
 void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();
 
-void _setLoadingError() => _authenticationCubit.setLoadingError(_exception.toString());
+void _setFailed() => _authenticationCubit.setFailed(_exception.toString());
