@@ -62,4 +62,4 @@ lib/core/DI/configure_automatic_di.config.dart
 **.config.dart
 
 # full list of countries
-/lib/utils/countries/full_country_list.dart
+lib/utils/countries/full_country_list.dart
