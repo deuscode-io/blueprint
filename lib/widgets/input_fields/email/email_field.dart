@@ -29,6 +29,7 @@ class EmailField extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       maxLength: 128,
+      onTapOutside: (_) => focusNode.unfocus(),
       decoration: InputDecoration(
         errorText: errorText == null ? null : _translate(errorText!),
         prefixIcon: const Icon(Icons.email_outlined),

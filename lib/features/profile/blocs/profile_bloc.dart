@@ -4,8 +4,8 @@ import 'package:blueprint/features/profile/blocs/profile_event.dart';
 import 'package:blueprint/features/profile/blocs/profile_state.dart';
 import 'package:blueprint/features/profile/repos/get_profile_repo.dart';
 import 'package:blueprint/widgets/input_fields/email/app_email_validator.dart';
-import 'package:blueprint/widgets/input_fields/name/first_name_validator.dart';
-import 'package:blueprint/widgets/input_fields/name/last_name_validator.dart';
+import 'package:blueprint/widgets/input_fields/name/validators/first_name_validator.dart';
+import 'package:blueprint/widgets/input_fields/name/validators/last_name_validator.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton

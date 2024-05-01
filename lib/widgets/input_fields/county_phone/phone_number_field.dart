@@ -61,9 +61,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       inputFormatters: [
         maskFormatter,
       ],
-      onTapOutside: (_) {
-        widget.focusNode.unfocus();
-      },
+      onTapOutside: (_) => widget.focusNode.unfocus(),
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(

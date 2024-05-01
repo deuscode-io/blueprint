@@ -71,6 +71,7 @@ class NameField extends StatelessWidget {
       textCapitalization: TextCapitalization.words,
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.next,
+      onTapOutside: (_) => focusNode.unfocus(),
       maxLength: 64,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z]| ')),
