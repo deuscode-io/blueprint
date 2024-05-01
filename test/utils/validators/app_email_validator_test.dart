@@ -1,5 +1,5 @@
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
-import 'package:blueprint/utils/validators/app_email_validator.dart';
+import 'package:blueprint/widgets/input_fields/email/app_email_validator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const validEmail = 'some@gmail.com';

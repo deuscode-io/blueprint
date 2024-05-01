@@ -1,4 +1,4 @@
-import 'package:blueprint/actions/authentication/get_auth_token_action.dart';
+import 'package:blueprint/features/authentication/actions/get_auth_token_action.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

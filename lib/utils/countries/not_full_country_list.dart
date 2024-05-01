@@ -14,6 +14,13 @@ final rawCountries = <Map<String, dynamic>>[
     'minLength': 8,
   },
   {
+    'name': 'Russia',
+    'isoCode': 'RU',
+    'phoneCode': '+7',
+    'mask': '### ### ## ##',
+    'minLength': 10,
+  },
+  {
     'name': 'Holy See',
     'isoCode': 'VA',
     'phoneCode': '+39',

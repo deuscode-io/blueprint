@@ -50,7 +50,7 @@ ios/build/**
 
 # Secrets.
 .env
-lib/core/configs/secrets.g.dart
+lib/core/configs/secrets/secrets.g.dart
 
 # DI.
 lib/core/DI/configure_automatic_di.config.dart

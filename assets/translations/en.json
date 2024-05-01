@@ -24,5 +24,9 @@
   "phone_validator": {
     "empty_phone": "Please enter your phone number",
     "not_valid_phone": "Please enter a valid phone number"
+  },
+  "button_actions": {
+    "reload_profile": "Reload profile",
+    "logout": "Log out"
   }
 }

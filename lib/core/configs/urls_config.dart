@@ -1,4 +1,4 @@
-import 'package:blueprint/core/configs/secrets.dart';
+import 'package:blueprint/core/configs/secrets/secrets.dart';
 
 class UrlsConfig {
   const UrlsConfig();

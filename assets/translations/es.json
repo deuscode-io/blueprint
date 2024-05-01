@@ -1,23 +1,32 @@
 {
-  "home_description": "Has pulsado el botón tantas veces {count}",
-  "home_action": "Incremento",
+  "home_description": "Has pulsado el botón esta cantidad de veces {count}",
+  "home_action": "Incrementar",
   "text_field_labels": {
-    "first_name": "Nombre",
-    "last_name": "Apellido",
+    "first_name": "First name",
+    "last_name": "Last name",
     "dob": "Fecha de nacimiento",
-    "email": "Correo electrónico",
-    "phone": "Teléfono"
+    "email": "Email",
+    "código_país": "Código",
+    "phone_number": "Phone_number"
   },
   "app_email_validator": {
     "empty_email": "Por favor, introduzca su dirección de correo electrónico",
     "not_valid_email": "Por favor, introduzca una dirección de correo electrónico válida"
   },
-  "validador_nombre": {
+  "first_name_validator": {
     "empty_first_name": "Por favor, introduzca su nombre de pila",
     "not_valid_first_name": "Por favor, introduzca un nombre de pila válido"
   },
   "last_name_validator": {
     "empty_last_name": "Por favor, introduzca su apellido",
     "not_valid_last_name": "Por favor, introduzca un apellido válido"
+  },
+  "phone_validator": {
+    "empty_phone": "Por favor, introduzca su número de teléfono",
+    "not_valid_phone": "Por favor, introduzca un número de teléfono válido"
+  },
+  "button_actions": {
+    "reload_profile": "Recargar perfil",
+    "logout": "Cerrar sesión"
   }
 }

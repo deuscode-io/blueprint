@@ -6,18 +6,27 @@
     "last_name": "Nom de famille",
     "dob": "Date de naissance",
     "email": "Email",
-    "phone": "Téléphone"
+    "country_code": "Code",
+    "phone_number": "Numéro de téléphone"
   },
-  "app_email_validator" : {
-    "empty_email" : "Veuillez saisir votre adresse e-mail",
-    "not_valid_email" : "Veuillez saisir une adresse e-mail valide"
+  "app_email_validator": {
+    "empty_email": "Veuillez saisir votre adresse électronique",
+    "not_valid_email": "Veuillez saisir une adresse e-mail valide"
   },
-  "first_name_validator" : {
-    "empty_first_name" : "Veuillez saisir votre prénom",
-    "prénom_non_valide" : "Veuillez saisir un prénom valide"
+  "first_name_validator": {
+    "empty_first_name": "Veuillez saisir votre prénom",
+    "prénom_non_valide": "Veuillez saisir un prénom valide"
   },
-  "last_name_validator" : {
-    "empty_last_name" : "Veuillez saisir votre nom de famille",
-    "not_valid_last_name" : "Veuillez saisir un nom de famille valide"
+  "last_name_validator": {
+    "empty_last_name": "Veuillez saisir votre nom de famille",
+    "not_valid_last_name": "Veuillez saisir un nom de famille valide"
+  },
+  "phone_validator": {
+    "empty_phone": "Veuillez saisir votre numéro de téléphone",
+    "not_valid_phone": "Veuillez saisir un numéro de téléphone valide"
+  },
+  "button_actions": {
+    "reload_profile": "Recharger le profil",
+    "logout": "Déconnexion"
   }
 }

@@ -32,7 +32,9 @@ class AppColorsDark {
   static const surfaceTint = Color(0xffd0bcff);
 
   // app colors
-  static const threeDotIndicatorColor = Color(0xff01FFA4);
+  static const threeDotIndicator = Color(0xff01FFA4);
+  static const dragHandler = Color(0xff01FFA4);
+
   static const enabledBorder = Color(0xffd0bcff);
   static const focusedBorder = Color(0xff01FFA4);
   static const errorBorder = Color(0xffb3261e);

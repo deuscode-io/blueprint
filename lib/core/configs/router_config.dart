@@ -1,10 +1,10 @@
-import 'package:blueprint/ui/pages/components/components_page.dart';
-import 'package:blueprint/ui/pages/initial_page.dart';
-import 'package:blueprint/ui/pages/notes/detail_page.dart';
-import 'package:blueprint/ui/pages/notes/favorites_page.dart';
-import 'package:blueprint/ui/pages/notes/notes_page.dart';
-import 'package:blueprint/ui/pages/notes/root_page.dart';
-import 'package:blueprint/ui/pages/profile/profile_page.dart';
+import 'package:blueprint/features/authentication/ui/initial_page.dart';
+import 'package:blueprint/features/components/ui/components_page.dart';
+import 'package:blueprint/features/details/ui/detail_page.dart';
+import 'package:blueprint/features/favorites/ui/favorites_page.dart';
+import 'package:blueprint/features/home/ui/home_page.dart';
+import 'package:blueprint/features/notes/ui/notes_page.dart';
+import 'package:blueprint/features/profile/ui/profile_page.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -15,7 +15,7 @@ final routerConfig = GoRouter(
       builder: (context, state) => const InitialPage(),
     ),
     StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) => RootPage(
+      builder: (context, state, navigationShell) => HomePage(
         navigationShell: navigationShell,
       ),
       branches: [
