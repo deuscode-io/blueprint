@@ -32,7 +32,9 @@ class AppColorsLight {
   static const surfaceTint = Color(0xff6750a4);
 
   // app colors
-  static const threeDotIndicatorColor = Color(0xff6750a4);
+  static const threeDotIndicator = Color(0xff6750a4);
+  static const dragHandler = Color(0xff6750a4);
+
   static const enabledBorder = Color(0xffd0bcff);
   static const focusedBorder = Color(0xff6750a4);
   static const errorBorder = Color(0xffb3261e);

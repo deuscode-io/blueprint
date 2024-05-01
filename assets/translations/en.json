@@ -6,7 +6,8 @@
     "last_name": "Last name",
     "dob": "Date of birth",
     "email": "Email",
-    "phone": "Phone"
+    "country_code": "Code",
+    "phone_number": "Phone number"
   },
   "app_email_validator": {
     "empty_email": "Please enter your e-mail address",
@@ -19,5 +20,13 @@
   "last_name_validator": {
     "empty_last_name": "Please enter your last name",
     "not_valid_last_name": "Please enter a valid last name"
+  },
+  "phone_validator": {
+    "empty_phone": "Please enter your phone number",
+    "not_valid_phone": "Please enter a valid phone number"
+  },
+  "button_actions": {
+    "reload_profile": "Reload profile",
+    "logout": "Log out"
   }
 }

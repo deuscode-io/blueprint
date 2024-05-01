@@ -1,17 +1,18 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
-import 'package:blueprint/app.dart';
+import 'package:blueprint/app/app.dart';
+import 'package:blueprint/app/wrappers/localization_wrapper.dart';
+import 'package:blueprint/app/wrappers/multi_bloc_provider_wrapper.dart';
 import 'package:blueprint/core/DI/setup_automatic_di.dart';
 import 'package:blueprint/core/DI/setup_manual_di.dart';
 import 'package:blueprint/core/configs/database_config.dart';
-import 'package:blueprint/ui/wrappers/adaptive_theme_wrapper.dart';
-import 'package:blueprint/ui/wrappers/localization_wrapper.dart';
-import 'package:blueprint/ui/wrappers/multi_bloc_provider_wrapper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'app/wrappers/adaptive_theme_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

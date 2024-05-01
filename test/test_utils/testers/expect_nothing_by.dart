@@ -1,4 +1,4 @@
-import 'package:blueprint/ui/widgets/texts/translated_text.dart';
+import 'package:blueprint/widgets/texts/translated_text.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 

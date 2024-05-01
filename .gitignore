@@ -50,7 +50,7 @@ ios/build/**
 
 # Secrets.
 .env
-lib/core/configs/secrets.g.dart
+lib/core/configs/secrets/secrets.g.dart
 
 # DI.
 lib/core/DI/configure_automatic_di.config.dart
@@ -60,3 +60,6 @@ lib/core/DI/configure_automatic_di.config.dart
 **.g.dart
 **.freezed.dart
 **.config.dart
+
+# full list of countries
+lib/utils/countries/full_country_list.dart

@@ -1,10 +1,10 @@
 import 'package:blueprint/core/DI/dependency_registrar.dart';
 import 'package:blueprint/core/configs/database_config.dart';
-import 'package:blueprint/core/configs/network/get_configured_dio.dart';
 import 'package:blueprint/core/configs/urls_config.dart';
-import 'package:blueprint/core/logs/logger.dart';
-import 'package:blueprint/core/providers/device_info_provider.dart';
-import 'package:blueprint/core/providers/package_info_provider.dart';
+import 'package:blueprint/core/features/device_info/providers/device_info_provider.dart';
+import 'package:blueprint/core/features/logs/logger.dart';
+import 'package:blueprint/core/network/restful/get_configured_dio.dart';
+import 'package:blueprint/core/features/package_info/package_info_provider.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
