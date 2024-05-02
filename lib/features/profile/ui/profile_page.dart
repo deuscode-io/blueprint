@@ -1,7 +1,7 @@
-import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/features/authentication/actions/set_auth_token_action.dart';
+import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/features/profile/blocs/profile_event.dart';
 import 'package:blueprint/features/profile/blocs/profile_state.dart';
 import 'package:blueprint/features/profile/ui/widgets/profile_failed.dart';

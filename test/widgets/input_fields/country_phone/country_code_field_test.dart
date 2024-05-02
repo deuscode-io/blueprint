@@ -16,7 +16,8 @@ import '../../../test_utils/testers/expect_widget_by.dart';
 final _country = CountryFixture.currentCountry;
 final _countries = CountryFixture.someCountries;
 
-final _mockShowCountriesBottomSheetAction = MockShowCountriesBottomSheetAction();
+final _mockShowCountriesBottomSheetAction =
+    MockShowCountriesBottomSheetAction();
 
 class MockBuildContext extends Mock implements BuildContext {}
 
@@ -57,7 +58,9 @@ void main() {
         (tester) async {
           await tester.appPumpWidget();
 
-          ExpectWidgetBy.translatedText(LocaleKeys.text_field_labels_country_code);
+          ExpectWidgetBy.translatedText(
+            LocaleKeys.text_field_labels_country_code,
+          );
         },
       );
 
@@ -67,7 +70,9 @@ void main() {
           children: [
             _buildCountryCodeField(null),
             const SizedBox(height: 16),
-            _buildCountryCodeField(LocaleKeys.first_name_validator_empty_first_name),
+            _buildCountryCodeField(
+              LocaleKeys.first_name_validator_empty_first_name,
+            ),
           ],
         ),
       );

@@ -6,8 +6,11 @@ import 'package:mocktail/mocktail.dart';
 
 class MockUuidProvider extends Mock implements UuidProvider {}
 
-class MockCurrentSessionIdProvider extends Mock implements CurrentSessionIdProvider {}
+class MockCurrentSessionIdProvider extends Mock
+    implements CurrentSessionIdProvider {}
 
-class MockConnectionSubscriptionProvider extends Mock implements ConnectionSubscriptionProvider {}
+class MockConnectionSubscriptionProvider extends Mock
+    implements ConnectionSubscriptionProvider {}
 
-class MockIOWebSocketChannelProvider extends Mock implements IOWebSocketChannelProvider {}
+class MockIOWebSocketChannelProvider extends Mock
+    implements IOWebSocketChannelProvider {}

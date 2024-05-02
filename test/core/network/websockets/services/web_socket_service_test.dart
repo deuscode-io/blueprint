@@ -52,7 +52,8 @@ void main() {
     when(_cancelSubscriptionCall).thenAnswer(Future.value);
     when(_closeChannelCall).thenAnswer(Future.value);
     when(_getSocketChannelCall).thenAnswer((_) => _ioWebSocketChannel);
-    when(() => _ioWebSocketChannel.stream).thenAnswer((_) => _streamController.stream);
+    when(() => _ioWebSocketChannel.stream)
+        .thenAnswer((_) => _streamController.stream);
     when(_onWebSocketDataReactionCall).thenAnswer(Future.value);
     when(_onWebSocketDisconnectionReactionCall).thenAnswer(Future.value);
   });
@@ -189,7 +190,8 @@ void main() {
 
 String _generatedUuidProviderCall() => _generatedUuidProvider();
 
-void _onWebSocketDisconnectionReactionCall() => _onWebSocketDisconnectionReaction(any());
+void _onWebSocketDisconnectionReactionCall() =>
+    _onWebSocketDisconnectionReaction(any());
 
 void _onWebSocketDataReactionCall() => _onWebSocketDataReaction(_message);
 
@@ -204,19 +206,24 @@ void _verifySocketGetsStopped() {
 
 void _getSocketChannelCall() => _ioWebSocketChannelProvider.getSocketChannel();
 
-void _setSessionIdCall({String? sessionId = _sessionId}) => _currentSessionIdProvider.setSessionId(sessionId);
+void _setSessionIdCall({String? sessionId = _sessionId}) =>
+    _currentSessionIdProvider.setSessionId(sessionId);
 
 void _closeChannelCall() => _ioWebSocketChannelProvider.closeSocketChannel();
 
-void _cancelSubscriptionCall() => _connectionSubscriptionProvider.cancelSubscription();
+void _cancelSubscriptionCall() =>
+    _connectionSubscriptionProvider.cancelSubscription();
 
-void _setSubscriptionCall() => _connectionSubscriptionProvider.setSubscription(any());
+void _setSubscriptionCall() =>
+    _connectionSubscriptionProvider.setSubscription(any());
 
-void _setSocketChannelCall() => _ioWebSocketChannelProvider.setSocketChannel(any());
+void _setSocketChannelCall() =>
+    _ioWebSocketChannelProvider.setSocketChannel(any());
 
 bool _isOldSessionCall() => _currentSessionIdProvider.isOldSession(_sessionId);
 
-Future<String> _getWebSocketTokenRepoCall() => _getWebSocketTokenRepo(_accountId);
+Future<String> _getWebSocketTokenRepoCall() =>
+    _getWebSocketTokenRepo(_accountId);
 
 Future<void> _webSocketServiceCall() async {
   _getWebSocketService().startWebSocket(_accountId);

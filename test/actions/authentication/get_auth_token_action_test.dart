@@ -11,7 +11,8 @@ final _getAuthTokenRepo = MockGetAuthTokenRepo();
 
 void main() {
   setUp(() {
-    when(_getAuthTokenRepo.call).thenAnswer((_) => Future.value(_authTokenFixture));
+    when(_getAuthTokenRepo.call)
+        .thenAnswer((_) => Future.value(_authTokenFixture));
     when(_setLoading).thenReturn(null);
     when(_setAuthenticated).thenReturn(null);
     when(_setNotAuthenticated).thenReturn(null);
@@ -84,7 +85,8 @@ Future<void> _getAuthTokenActionCall() async {
 
 void _setLoading() => _authenticationCubit.setLoading();
 
-void _setAuthenticated() => _authenticationCubit.setAuthenticated(_authTokenFixture);
+void _setAuthenticated() =>
+    _authenticationCubit.setAuthenticated(_authTokenFixture);
 
 void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();
 

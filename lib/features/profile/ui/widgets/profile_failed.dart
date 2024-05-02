@@ -1,6 +1,6 @@
-import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/features/profile/blocs/profile_event.dart';
 import 'package:blueprint/widgets/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';

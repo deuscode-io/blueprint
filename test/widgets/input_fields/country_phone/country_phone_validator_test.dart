@@ -31,7 +31,11 @@ void main() {
       test(
         'WHEN a valid phone is entered',
         () {
-          _verifyValidationResult(phone: _validPhone, isPressed: true, hasFocus: true);
+          _verifyValidationResult(
+            phone: _validPhone,
+            isPressed: true,
+            hasFocus: true,
+          );
           _verifyValidationResult(phone: _validPhone, isPressed: true);
           _verifyValidationResult(phone: _validPhone, hasFocus: true);
           _verifyValidationResult(phone: _validPhone);
@@ -46,7 +50,11 @@ void main() {
       test(
         'WHEN a phone is not entered',
         () {
-          _verifyValidationResult(isPressed: true, hasFocus: true, error: _emptyError);
+          _verifyValidationResult(
+            isPressed: true,
+            hasFocus: true,
+            error: _emptyError,
+          );
           _verifyValidationResult(isPressed: true, error: _emptyError);
         },
       );
@@ -59,8 +67,17 @@ void main() {
       test(
         'WHEN a phone is partially entered',
         () {
-          _verifyValidationResult(phone: _partialPhone, isPressed: true, hasFocus: true, error: _notValidError);
-          _verifyValidationResult(phone: _partialPhone, isPressed: true, error: _notValidError);
+          _verifyValidationResult(
+            phone: _partialPhone,
+            isPressed: true,
+            hasFocus: true,
+            error: _notValidError,
+          );
+          _verifyValidationResult(
+            phone: _partialPhone,
+            isPressed: true,
+            error: _notValidError,
+          );
           _verifyValidationResult(phone: _partialPhone, error: _notValidError);
         },
       );
