@@ -9,7 +9,7 @@ import '../../../test_utils/extensions/pump_ext.dart';
 import '../../../test_utils/extensions/test_actions_ext.dart';
 import '../../../test_utils/testers/expect_widget_by.dart';
 
-const _name = 'Kasparov';
+const _email = 'WorldChessChampion@gmail.com';
 const _error = 'Some error';
 
 final _controller = TextEditingController();
@@ -33,33 +33,33 @@ void main() {
         (tester) async {
           await tester.appPumpWidget(onChanged: (text) => _value = text);
 
-          await tester.enterTextByType(type: TextField, text: _name);
+          await tester.enterTextByType(type: TextField, text: _email);
 
-          expect(_value, _name);
+          expect(_value, _email);
         },
       );
 
       testWidgets(
         'WHEN tapped on suffix button',
         (tester) async {
-          _controller.text = _name;
-          await tester.appPumpWidget(onChanged: (_) => _value = _name);
+          _controller.text = _email;
+          await tester.appPumpWidget(onChanged: (_) => _value = _email);
 
           await tester.tapByType(type: SuffixIconButton);
 
-          expect(_value, _name);
+          expect(_value, _email);
         },
       );
 
       testWidgets(
         'WHEN tapped on submit button',
         (tester) async {
-          await tester.appPumpWidget(onSubmitted: (_) => _value = _name);
+          await tester.appPumpWidget(onSubmitted: (_) => _value = _email);
 
           await tester.enterTextByType(type: TextField, text: '');
           await tester.testTextInput.receiveAction(TextInputAction.done);
 
-          expect(_value, _name);
+          expect(_value, _email);
         },
       );
     },

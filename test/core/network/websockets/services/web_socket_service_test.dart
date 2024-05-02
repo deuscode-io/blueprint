@@ -15,7 +15,7 @@ const _urlsConfig = UrlsConfig();
 
 final _exception = Exception('Some error');
 
-final _generatedUuidProvider = MockGeneratedUuidProvider();
+final _generatedUuidProvider = MockUuidProvider();
 final _getWebSocketTokenRepo = MockGetWebSocketTokenRepo();
 final _currentSessionIdProvider = MockCurrentSessionIdProvider();
 final _connectionSubscriptionProvider = MockConnectionSubscriptionProvider();
@@ -223,7 +223,7 @@ Future<void> _webSocketServiceCall() async {
 }
 
 WebSocketService _getWebSocketService() => WebSocketService(
-      generatedUuidProvider: _generatedUuidProvider,
+      uuidProvider: _generatedUuidProvider,
       getWebSocketTokenRepo: _getWebSocketTokenRepo,
       currentSessionIdProvider: _currentSessionIdProvider,
       connectionSubscriptionProvider: _connectionSubscriptionProvider,

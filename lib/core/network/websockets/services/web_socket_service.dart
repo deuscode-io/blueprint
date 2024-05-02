@@ -19,7 +19,7 @@ class WebSocketService {
   const WebSocketService({
     required this.urlsConfig,
     required this.getWebSocketTokenRepo,
-    required this.generatedUuidProvider,
+    required this.uuidProvider,
     required this.currentSessionIdProvider,
     required this.connectionSubscriptionProvider,
     required this.ioWebSocketChannelProvider,
@@ -29,7 +29,7 @@ class WebSocketService {
 
   final UrlsConfig urlsConfig;
   final GetWebSocketTokenRepo getWebSocketTokenRepo;
-  final UuidProvider generatedUuidProvider;
+  final UuidProvider uuidProvider;
   final CurrentSessionIdProvider currentSessionIdProvider;
   final ConnectionSubscriptionProvider connectionSubscriptionProvider;
   final IOWebSocketChannelProvider ioWebSocketChannelProvider;
@@ -42,7 +42,7 @@ class WebSocketService {
   }
 
   Future<void> startWebSocket(String accountId) async {
-    final currentSessionId = generatedUuidProvider();
+    final currentSessionId = uuidProvider();
 
     currentSessionIdProvider.setSessionId(currentSessionId);
     await _getWebSocketToken(accountId, currentSessionId);

@@ -7,3 +7,4 @@ export 'network_mocks.dart';
 export 'provider_mocks.dart';
 export 'repo_mocks.dart';
 export 'stream_mocks.dart';
+export 'bottom_sheet_mocks.dart';

@@ -14,7 +14,6 @@ class ShowCountriesBottomSheetAction {
     required BuildContext context,
     required List<Country> countries,
     required Country selectedCountry,
-    bool isCountryResidenceUseCase = true,
   }) async {
     return showDraggableBottomSheet(
       context: context,
@@ -23,7 +22,6 @@ class ShowCountriesBottomSheetAction {
           scrollController: scrollController,
           countries: countries,
           selectedCountry: selectedCountry,
-          isCountryResidenceUseCase: isCountryResidenceUseCase,
         );
       },
     );

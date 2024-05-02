@@ -4,7 +4,7 @@ import 'package:blueprint/core/network/websockets/providers/io_web_socket_channe
 import 'package:blueprint/core/features/uuid/uuid_provider.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockGeneratedUuidProvider extends Mock implements UuidProvider {}
+class MockUuidProvider extends Mock implements UuidProvider {}
 
 class MockCurrentSessionIdProvider extends Mock implements CurrentSessionIdProvider {}
 

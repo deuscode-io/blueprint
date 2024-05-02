@@ -1,10 +1,10 @@
-import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/core/DI/injector.dart';
+import 'package:blueprint/features/profile/blocs/profile_bloc.dart';
 import 'package:blueprint/features/profile/blocs/profile_event.dart';
 import 'package:blueprint/features/profile/blocs/profile_state.dart';
 import 'package:blueprint/widgets/buttons/app_elevated_button.dart';
-import 'package:blueprint/widgets/input_fields/county_phone/country_code_field.dart';
-import 'package:blueprint/widgets/input_fields/county_phone/phone_number_field.dart';
+import 'package:blueprint/widgets/input_fields/country_phone/country_code_field.dart';
+import 'package:blueprint/widgets/input_fields/country_phone/phone_number_field.dart';
 import 'package:blueprint/widgets/input_fields/email/email_field.dart';
 import 'package:blueprint/widgets/input_fields/name/name_field.dart';
 import 'package:flutter/material.dart';
