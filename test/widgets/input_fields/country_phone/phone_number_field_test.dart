@@ -14,7 +14,6 @@ import '../../../test_utils/testers/expect_widget_by.dart';
 const _initialNumber = '9999999999';
 const _newNumber = '8888888888';
 const _formattedInitialNumberRU = '999 999 99 99';
-const _formattedNewNumberRU = '888 888 88 88';
 const _formattedInitialNumberPE = '999 999 999';
 const _errorText = 'some error';
 

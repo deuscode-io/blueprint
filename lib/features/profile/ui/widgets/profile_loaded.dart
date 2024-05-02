@@ -30,7 +30,7 @@ class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControlle
     firstNameController.text = _state.firstName;
     lastNameController.text = _state.lastName;
     emailController.text = _state.email;
-    countryCodeController.text = _state.country!.phoneCode;
+    countryCodeController.text = _state.country.phoneCode;
     phoneNumberController.text = _state.phoneNumber;
 
     firstNameFocusNode.addListener(() {
@@ -92,7 +92,7 @@ class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControlle
                     child: CountryCodeField(
                       controller: countryCodeController,
                       onChanged: (country) => _profileBloc.add(UpdateCountry(country)),
-                      errorText: _state.countryCodeError,
+                      errorText: _state.phoneNumberError == null ? null : ' ',
                       country: _state.country,
                       countries: _state.countries,
                     ),
@@ -103,10 +103,12 @@ class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControlle
                     child: PhoneNumberField(
                       controller: phoneNumberController,
                       focusNode: phoneNumberFocusNode,
-                      onChanged: (text) => _profileBloc.add(UpdatePhoneNumber(text)),
+                      onChanged: (text) => _profileBloc.add(
+                        UpdatePhoneNumber(text, phoneNumberFocusNode.hasFocus),
+                      ),
                       errorText: _state.phoneNumberError,
                       initialPhoneNumber: phoneNumberController.text,
-                      country: _state.country ?? _state.countries.first,
+                      country: _state.country,
                     ),
                   ),
                 ],

@@ -2,15 +2,15 @@ import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/widgets/input_fields/email/app_email_validator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-const validEmail = 'some@gmail.com';
-const emptyEmail = '';
-const notValidEmail1 = 'a';
-const notValidEmail2 = 'a@';
-const notValidEmail3 = 'a@a';
-const notValidEmail4 = 'a@a.';
+const _validEmail = 'some@gmail.com';
+const _emptyEmail = '';
+const _notValidEmail1 = 'a';
+const _notValidEmail2 = 'a@';
+const _notValidEmail3 = 'a@a';
+const _notValidEmail4 = 'a@a.';
 
-const emptyResult = LocaleKeys.app_email_validator_empty_email;
-const notValidResult = LocaleKeys.app_email_validator_not_valid_email;
+const _emptyError = LocaleKeys.app_email_validator_empty_email;
+const _notValidError = LocaleKeys.app_email_validator_not_valid_email;
 
 void main() {
   group(
@@ -21,28 +21,28 @@ void main() {
         () {
           _verifyValidationResult(hasFocus: true);
           _verifyValidationResult(error: null);
-          _verifyValidationResult(email: emptyEmail, hasFocus: true);
-          _verifyValidationResult(email: emptyEmail);
+          _verifyValidationResult(email: _emptyEmail, hasFocus: true);
+          _verifyValidationResult(email: _emptyEmail);
         },
       );
 
       test(
         'WHEN an e-mail address is partially entered',
         () {
-          _verifyValidationResult(email: notValidEmail1, hasFocus: true);
-          _verifyValidationResult(email: notValidEmail2, hasFocus: true);
-          _verifyValidationResult(email: notValidEmail3, hasFocus: true);
-          _verifyValidationResult(email: notValidEmail4, hasFocus: true);
+          _verifyValidationResult(email: _notValidEmail1, hasFocus: true);
+          _verifyValidationResult(email: _notValidEmail2, hasFocus: true);
+          _verifyValidationResult(email: _notValidEmail3, hasFocus: true);
+          _verifyValidationResult(email: _notValidEmail4, hasFocus: true);
         },
       );
 
       test(
         'WHEN a valid e-mail address is entered',
         () {
-          _verifyValidationResult(email: validEmail, isPressed: true, hasFocus: true);
-          _verifyValidationResult(email: validEmail, isPressed: true);
-          _verifyValidationResult(email: validEmail, hasFocus: true);
-          _verifyValidationResult(email: validEmail);
+          _verifyValidationResult(email: _validEmail, isPressed: true, hasFocus: true);
+          _verifyValidationResult(email: _validEmail, isPressed: true);
+          _verifyValidationResult(email: _validEmail, hasFocus: true);
+          _verifyValidationResult(email: _validEmail);
         },
       );
     },
@@ -54,10 +54,10 @@ void main() {
       test(
         'WHEN an e-mail address is not entered',
         () {
-          _verifyValidationResult(isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(isPressed: true, error: emptyResult);
-          _verifyValidationResult(email: emptyEmail, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(email: emptyEmail, isPressed: true, error: emptyResult);
+          _verifyValidationResult(isPressed: true, hasFocus: true, error: _emptyError);
+          _verifyValidationResult(isPressed: true, error: _emptyError);
+          _verifyValidationResult(email: _emptyEmail, isPressed: true, hasFocus: true, error: _emptyError);
+          _verifyValidationResult(email: _emptyEmail, isPressed: true, error: _emptyError);
         },
       );
     },
@@ -69,21 +69,21 @@ void main() {
       test(
         'WHEN an e-mail address is partially entered',
         () {
-          _verifyValidationResult(email: notValidEmail1, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail1, isPressed: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail1, error: notValidResult);
+          _verifyValidationResult(email: _notValidEmail1, isPressed: true, hasFocus: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail1, isPressed: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail1, error: _notValidError);
 
-          _verifyValidationResult(email: notValidEmail2, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail2, isPressed: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail2, error: notValidResult);
+          _verifyValidationResult(email: _notValidEmail2, isPressed: true, hasFocus: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail2, isPressed: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail2, error: _notValidError);
 
-          _verifyValidationResult(email: notValidEmail3, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail3, isPressed: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail3, error: notValidResult);
+          _verifyValidationResult(email: _notValidEmail3, isPressed: true, hasFocus: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail3, isPressed: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail3, error: _notValidError);
 
-          _verifyValidationResult(email: notValidEmail4, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail4, isPressed: true, error: notValidResult);
-          _verifyValidationResult(email: notValidEmail4, error: notValidResult);
+          _verifyValidationResult(email: _notValidEmail4, isPressed: true, hasFocus: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail4, isPressed: true, error: _notValidError);
+          _verifyValidationResult(email: _notValidEmail4, error: _notValidError);
         },
       );
     },

@@ -23,12 +23,11 @@ final class ProfileStateLoaded implements ProfileState {
   final String firstName;
   final String lastName;
   final String email;
-  final Country? country;
+  final Country country;
   final String phoneNumber;
   final String? firstNameError;
   final String? lastNameError;
   final String? emailError;
-  final String? countryCodeError;
   final String? phoneNumberError;
   final bool isUpdating;
 
@@ -43,7 +42,6 @@ final class ProfileStateLoaded implements ProfileState {
     this.firstNameError,
     this.lastNameError,
     this.emailError,
-    this.countryCodeError,
     this.phoneNumberError,
     this.isUpdating = false,
   });
@@ -55,8 +53,6 @@ final class ProfileStateLoaded implements ProfileState {
         lastNameError == null &&
         email.isNotEmpty &&
         emailError == null &&
-        country != null &&
-        countryCodeError == null &&
         phoneNumber.isNotEmpty &&
         phoneNumberError == null;
   }
