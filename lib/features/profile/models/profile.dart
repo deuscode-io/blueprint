@@ -21,10 +21,10 @@ class Profile with _$Profile {
     return const Profile(
       id: 'id',
       firstName: 'Garry',
-      lastName: 'Kasparov',
-      email: 'WorldChessChampion@gmail.com',
-      icoCountryCode: 'RU',
-      phoneNumber: '9999999913',
+      lastName: 'Bush',
+      email: 'garry_bush@gmail.com',
+      icoCountryCode: 'FR',
+      phoneNumber: '987654321',
     );
   }
 }

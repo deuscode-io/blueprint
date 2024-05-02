@@ -17,7 +17,7 @@ class CountryCodeField extends StatelessWidget {
     required this.errorText,
   });
 
-  final Country? country;
+  final Country country;
   final List<Country> countries;
   final TextEditingController controller;
   final ValueChanged<Country> onChanged;
@@ -28,6 +28,8 @@ class CountryCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.text = country.phoneCode;
+
     return IntrinsicHeight(
       child: Stack(
         children: [
@@ -35,9 +37,7 @@ class CountryCodeField extends StatelessWidget {
             controller: controller,
             decoration: InputDecoration(
               errorText: errorText,
-              prefixIcon: country == null
-                  ? const Icon(Icons.language)
-                  : CountryFlag(isoCode: country!.isoCode),
+              prefixIcon: CountryFlag(isoCode: country.isoCode),
               label: const TranslatedText(
                 LocaleKeys.text_field_labels_country_code,
               ),
@@ -49,7 +49,7 @@ class CountryCodeField extends StatelessWidget {
               final newCountry = await _showCountriesBottomSheet(
                 context: context,
                 countries: countries,
-                selectedCountry: country ?? countries.first,
+                selectedCountry: country,
               );
 
               if (newCountry != null &&

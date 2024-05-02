@@ -2,6 +2,7 @@ import 'package:blueprint/core/DI/dependency_registrar.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/features/countries/actions/show_countries_bottom_sheet_action.dart';
 import 'package:blueprint/features/countries/models/country.dart';
+import 'package:blueprint/features/countries/ui/widgets/country_flag.dart';
 import 'package:blueprint/widgets/input_fields/country_phone/country_code_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -60,6 +61,20 @@ void main() {
 
           ExpectWidgetBy.translatedText(
             LocaleKeys.text_field_labels_country_code,
+          );
+        },
+      );
+
+      testWidgets(
+        'WHEN pumped '
+        'THEN the country gets displayed',
+        (tester) async {
+          await tester.appPumpWidget();
+
+          ExpectWidgetBy.textContaining(_country.phoneCode);
+          ExpectWidgetBy.predicate(
+            (widget) =>
+                widget is CountryFlag && widget.isoCode == _country.isoCode,
           );
         },
       );
