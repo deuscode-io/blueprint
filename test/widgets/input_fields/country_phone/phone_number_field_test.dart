@@ -14,12 +14,13 @@ import '../../../test_utils/testers/expect_widget_by.dart';
 const _initialNumber = '9999999999';
 const _newNumber = '8888888888';
 const _formattedInitialNumberRU = '999 999 99 99';
-const _formattedNewNumberRU = '888 888 88 88';
 const _formattedInitialNumberPE = '999 999 999';
 const _errorText = 'some error';
 
-final _countryRU = CountryFixture.someCountries.firstWhere((e) => e.isoCode == 'RU');
-final _countryPE = CountryFixture.someCountries.firstWhere((e) => e.isoCode == 'PE');
+final _countryRU =
+    CountryFixture.someCountries.firstWhere((e) => e.isoCode == 'RU');
+final _countryPE =
+    CountryFixture.someCountries.firstWhere((e) => e.isoCode == 'PE');
 
 String _value = '';
 
@@ -35,7 +36,9 @@ void main() {
         (tester) async {
           await tester.pumpWidgetAppearance(country: _countryRU);
 
-          ExpectWidgetBy.translatedText(LocaleKeys.text_field_labels_phone_number);
+          ExpectWidgetBy.translatedText(
+            LocaleKeys.text_field_labels_phone_number,
+          );
         },
       );
 
@@ -82,7 +85,10 @@ void main() {
       testWidgets(
         'WHEN a user enters a phone number ',
         (tester) async {
-          await tester.pumpWidgetAppearance(country: _countryRU, initialNumber: '');
+          await tester.pumpWidgetAppearance(
+            country: _countryRU,
+            initialNumber: '',
+          );
 
           await tester.enterTextByType(type: TextField, text: '7');
           ExpectWidgetBy.text('7');
@@ -124,7 +130,10 @@ void main() {
       testWidgets(
         'WHEN entered a text',
         (tester) async {
-          await tester.pumpWidgetAppearance(country: _countryRU, onChanged: (text) => _value = text);
+          await tester.pumpWidgetAppearance(
+            country: _countryRU,
+            onChanged: (text) => _value = text,
+          );
 
           await tester.enterTextByType(type: TextField, text: _newNumber);
           expect(_value, _newNumber);

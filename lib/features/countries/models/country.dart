@@ -13,5 +13,6 @@ class Country with _$Country {
     @JsonKey(name: 'min_length') required int minLength,
   }) = _Country;
 
-  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) =>
+      _$CountryFromJson(json);
 }

@@ -65,6 +65,7 @@ void _saveNotEmptyToken() => _saveAuthTokenRepo(_notEmptyToken);
 
 void _saveEmptyToken() => _saveAuthTokenRepo(_emptyToken);
 
-void _setAuthenticated() => _authenticationCubit.setAuthenticated(_notEmptyToken);
+void _setAuthenticated() =>
+    _authenticationCubit.setAuthenticated(_notEmptyToken);
 
 void _setNotAuthenticated() => _authenticationCubit.setNotAuthenticated();

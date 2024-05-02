@@ -6,15 +6,15 @@ const validName = 'Ya';
 const emptyName = '';
 const notValidName = 'Y';
 
-const emptyResult = LocaleKeys.last_name_validator_empty_last_name;
-const notValidResult = LocaleKeys.last_name_validator_not_valid_last_name;
+const emptyError = LocaleKeys.last_name_validator_empty_last_name;
+const notValidError = LocaleKeys.last_name_validator_not_valid_last_name;
 
 void main() {
   group(
     'GIVEN $LastNameValidator to test no errors',
     () {
       test(
-        'WHEN a first name is not entered',
+        'WHEN a last name is not entered',
         () {
           _verifyValidationResult(hasFocus: true);
           _verifyValidationResult(error: null);
@@ -24,16 +24,20 @@ void main() {
       );
 
       test(
-        'WHEN a first name is partially entered',
+        'WHEN a last name is partially entered',
         () {
           _verifyValidationResult(name: notValidName, hasFocus: true);
         },
       );
 
       test(
-        'WHEN a valid e-mail address is entered',
+        'WHEN a valid last name is entered',
         () {
-          _verifyValidationResult(name: validName, isPressed: true, hasFocus: true);
+          _verifyValidationResult(
+            name: validName,
+            isPressed: true,
+            hasFocus: true,
+          );
           _verifyValidationResult(name: validName, isPressed: true);
           _verifyValidationResult(name: validName, hasFocus: true);
           _verifyValidationResult(name: validName);
@@ -43,29 +47,51 @@ void main() {
   );
 
   group(
-    'GIVEN $LastNameValidator to test the empty email error',
+    'GIVEN $LastNameValidator to test the empty nam error',
     () {
       test(
-        'WHEN a first name is not entered',
+        'WHEN a last name is not entered',
         () {
-          _verifyValidationResult(isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(isPressed: true, error: emptyResult);
-          _verifyValidationResult(name: emptyName, isPressed: true, hasFocus: true, error: emptyResult);
-          _verifyValidationResult(name: emptyName, isPressed: true, error: emptyResult);
+          _verifyValidationResult(
+            isPressed: true,
+            hasFocus: true,
+            error: emptyError,
+          );
+          _verifyValidationResult(isPressed: true, error: emptyError);
+          _verifyValidationResult(
+            name: emptyName,
+            isPressed: true,
+            hasFocus: true,
+            error: emptyError,
+          );
+          _verifyValidationResult(
+            name: emptyName,
+            isPressed: true,
+            error: emptyError,
+          );
         },
       );
     },
   );
 
   group(
-    'GIVEN $LastNameValidator to test the not valid email error',
+    'GIVEN $LastNameValidator to test the not valid last name error',
     () {
       test(
-        'WHEN a first name is partially entered',
+        'WHEN a last name is partially entered',
         () {
-          _verifyValidationResult(name: notValidName, isPressed: true, hasFocus: true, error: notValidResult);
-          _verifyValidationResult(name: notValidName, isPressed: true, error: notValidResult);
-          _verifyValidationResult(name: notValidName, error: notValidResult);
+          _verifyValidationResult(
+            name: notValidName,
+            isPressed: true,
+            hasFocus: true,
+            error: notValidError,
+          );
+          _verifyValidationResult(
+            name: notValidName,
+            isPressed: true,
+            error: notValidError,
+          );
+          _verifyValidationResult(name: notValidName, error: notValidError);
         },
       );
     },

@@ -48,8 +48,9 @@ class UpdateCountry implements ProfileEvent {
 
 class UpdatePhoneNumber implements ProfileEvent {
   final String phoneNumber;
+  final bool hasFocus;
 
-  UpdatePhoneNumber(this.phoneNumber);
+  UpdatePhoneNumber(this.phoneNumber, this.hasFocus);
 }
 
 class UpdatePhoneNumberFocus implements ProfileEvent {

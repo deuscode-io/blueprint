@@ -73,7 +73,10 @@ void main() {
         (tester) async {
           await tester.appPumpWidget(onChanged: (text) => _value = text);
 
-          await tester.enterTextByType(type: TextField, text: '1A 2B  3C .a?b@c       CAT Do5na@ld      E!     ');
+          await tester.enterTextByType(
+            type: TextField,
+            text: '1A 2B  3C .a?b@c       CAT Do5na@ld      E!     ',
+          );
 
           expect(_value, 'A BC abc CAT DonaldE');
         },
@@ -90,7 +93,9 @@ void main() {
         (tester) async {
           await tester.appPumpWidget();
 
-          ExpectWidgetBy.translatedText(LocaleKeys.text_field_labels_first_name);
+          ExpectWidgetBy.translatedText(
+            LocaleKeys.text_field_labels_first_name,
+          );
         },
       );
 

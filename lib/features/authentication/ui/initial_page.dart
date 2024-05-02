@@ -1,7 +1,7 @@
-import 'package:blueprint/features/authentication/actions/get_auth_token_action.dart';
 import 'package:blueprint/core/DI/injector.dart';
-import 'package:blueprint/features/authentication/cubits/authentication_cubit.dart';
+import 'package:blueprint/features/authentication/actions/get_auth_token_action.dart';
 import 'package:blueprint/features/authentication/actions/set_auth_token_action.dart';
+import 'package:blueprint/features/authentication/cubits/authentication_cubit.dart';
 import 'package:blueprint/widgets/buttons/app_elevated_button.dart';
 import 'package:blueprint/widgets/indicators/three_dots_indicator.dart';
 import 'package:flutter/material.dart';

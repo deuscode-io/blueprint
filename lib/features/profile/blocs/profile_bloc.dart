@@ -3,6 +3,7 @@ import 'package:blueprint/features/countries/repos/get_countries_repo.dart';
 import 'package:blueprint/features/profile/blocs/profile_event.dart';
 import 'package:blueprint/features/profile/blocs/profile_state.dart';
 import 'package:blueprint/features/profile/repos/get_profile_repo.dart';
+import 'package:blueprint/widgets/input_fields/country_phone/country_phone_validator.dart';
 import 'package:blueprint/widgets/input_fields/email/app_email_validator.dart';
 import 'package:blueprint/widgets/input_fields/name/validators/first_name_validator.dart';
 import 'package:blueprint/widgets/input_fields/name/validators/last_name_validator.dart';
@@ -13,6 +14,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final FirstNameValidator firstNameValidator;
   final LastNameValidator lastNameValidator;
   final AppEmailValidator appEmailValidator;
+  final CountryPhoneValidator countryPhoneValidator;
   final GetCountriesRepo getCountriesRepo;
   final GetProfileRepo getProfileRepo;
 
@@ -22,6 +24,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     this.firstNameValidator,
     this.lastNameValidator,
     this.appEmailValidator,
+    this.countryPhoneValidator,
     this.getCountriesRepo,
     this.getProfileRepo,
   ) : super(ProfileStateInitial()) {
@@ -58,7 +61,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           firstName: event.firstName,
-          firstNameError: firstNameValidator.call(name: event.firstName, hasFocus: true),
+          firstNameError:
+              firstNameValidator.call(name: event.firstName, hasFocus: true),
         ),
       );
     });
@@ -66,7 +70,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateFirstNameFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          firstNameError: firstNameValidator.call(name: loadedState.firstName, hasFocus: event.hasFocus),
+          firstNameError: firstNameValidator.call(
+            name: loadedState.firstName,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
@@ -75,7 +82,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           lastName: event.lastName,
-          lastNameError: lastNameValidator.call(name: event.lastName, hasFocus: true),
+          lastNameError:
+              lastNameValidator.call(name: event.lastName, hasFocus: true),
         ),
       );
     });
@@ -83,7 +91,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateLastNameFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          lastNameError: lastNameValidator.call(name: loadedState.lastName, hasFocus: event.hasFocus),
+          lastNameError: lastNameValidator.call(
+            name: loadedState.lastName,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
@@ -92,7 +103,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           email: event.email,
-          emailError: appEmailValidator.call(email: event.email, hasFocus: true),
+          emailError:
+              appEmailValidator.call(email: event.email, hasFocus: true),
         ),
       );
     });
@@ -100,24 +112,47 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateEmailFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          emailError: appEmailValidator.call(email: loadedState.email, hasFocus: event.hasFocus),
+          emailError: appEmailValidator.call(
+            email: loadedState.email,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
 
     on<UpdateCountry>((event, emit) {
-      emit(loadedState.copyWith(country: event.country));
+      emit(
+        loadedState.copyWith(
+          country: event.country,
+          phoneNumberError: countryPhoneValidator(
+            phone: loadedState.phoneNumber,
+            minPhoneLength: event.country.minLength,
+          ),
+        ),
+      );
     });
 
     on<UpdatePhoneNumber>((event, emit) {
-      emit(loadedState.copyWith(phoneNumber: event.phoneNumber));
+      emit(
+        loadedState.copyWith(
+          phoneNumber: event.phoneNumber,
+          phoneNumberError: countryPhoneValidator(
+            phone: event.phoneNumber,
+            minPhoneLength: loadedState.country.minLength,
+            hasFocus: event.hasFocus,
+          ),
+        ),
+      );
     });
 
     on<UpdatePhoneNumberFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          phoneNumber: loadedState.phoneNumber,
-          phoneNumberError: null,
+          phoneNumberError: countryPhoneValidator(
+            phone: loadedState.phoneNumber,
+            minPhoneLength: loadedState.country.minLength,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
@@ -131,9 +166,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<ShowRequiredFields>((event, emit) async {
       emit(
         loadedState.copyWith(
-          firstNameError: firstNameValidator.call(name: loadedState.firstName, isPressed: true),
-          lastNameError: lastNameValidator.call(name: loadedState.lastName, isPressed: true),
-          emailError: appEmailValidator.call(email: loadedState.email, isPressed: true),
+          firstNameError: firstNameValidator.call(
+            name: loadedState.firstName,
+            isPressed: true,
+          ),
+          lastNameError: lastNameValidator.call(
+            name: loadedState.lastName,
+            isPressed: true,
+          ),
+          emailError: appEmailValidator.call(
+            email: loadedState.email,
+            isPressed: true,
+          ),
+          phoneNumberError: countryPhoneValidator.call(
+            phone: loadedState.phoneNumber,
+            isPressed: true,
+            minPhoneLength: loadedState.country.minLength,
+          ),
         ),
       );
     });

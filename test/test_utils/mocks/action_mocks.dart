@@ -4,4 +4,5 @@ import 'package:mocktail/mocktail.dart';
 
 class MockOnWebSocketDataAction extends Mock implements OnWebSocketDataAction {}
 
-class MockOnWebSocketDisconnectionAction extends Mock implements OnWebSocketDisconnectionAction {}
+class MockOnWebSocketDisconnectionAction extends Mock
+    implements OnWebSocketDisconnectionAction {}

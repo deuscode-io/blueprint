@@ -67,12 +67,15 @@ class _CountriesBottomSheetState extends State<CountriesBottomSheet> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
 
-      final selectedCountryPhoneIndex = widget.countries.indexOf(widget.selectedCountry);
+      final selectedCountryPhoneIndex =
+          widget.countries.indexOf(widget.selectedCountry);
 
       if (selectedCountryPhoneIndex != -1) {
         widget.scrollController.animateTo(
           selectedCountryPhoneIndex * _countryTileHeight,
-          duration: isInitial ? const Duration(milliseconds: 750) : const Duration(milliseconds: 250),
+          duration: isInitial
+              ? const Duration(milliseconds: 750)
+              : const Duration(milliseconds: 250),
           curve: Curves.ease,
         );
       }

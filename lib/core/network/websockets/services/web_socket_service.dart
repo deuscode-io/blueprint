@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:blueprint/core/configs/urls_config.dart';
+import 'package:blueprint/core/features/uuid/uuid_provider.dart';
 import 'package:blueprint/core/network/websockets/actions/on_web_socket_data_action.dart';
 import 'package:blueprint/core/network/websockets/actions/on_web_socket_disconnection_action.dart';
 import 'package:blueprint/core/network/websockets/providers/connection_subscription_provider.dart';
 import 'package:blueprint/core/network/websockets/providers/current_session_id_provider.dart';
 import 'package:blueprint/core/network/websockets/providers/io_web_socket_channel_provider.dart';
 import 'package:blueprint/core/network/websockets/repos/get_web_socket_token_repo.dart';
-import 'package:blueprint/core/features/uuid/uuid_provider.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web_socket_channel/io.dart';
 

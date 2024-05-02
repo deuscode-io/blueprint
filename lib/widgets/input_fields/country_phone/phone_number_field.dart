@@ -65,7 +65,9 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-        errorText: widget.errorText == null ? null : PhoneNumberField._translate(widget.errorText!),
+        errorText: widget.errorText == null
+            ? null
+            : PhoneNumberField._translate(widget.errorText!),
         prefixIcon: const Icon(Icons.phone),
         suffixIcon: widget.controller.text.trim().isEmpty
             ? null

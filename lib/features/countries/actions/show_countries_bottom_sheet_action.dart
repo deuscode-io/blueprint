@@ -6,7 +6,9 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ShowCountriesBottomSheetAction {
-  const ShowCountriesBottomSheetAction({required this.showDraggableBottomSheet});
+  const ShowCountriesBottomSheetAction({
+    required this.showDraggableBottomSheet,
+  });
 
   final ShowDraggableBottomSheetAction showDraggableBottomSheet;
 

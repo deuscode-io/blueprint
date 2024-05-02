@@ -23,7 +23,8 @@ class ExpectWidgetBy {
         (widget) =>
             widget is TranslatedText &&
             widget.text == localeKey &&
-            (namedArguments == null || mapEquals(widget.namedArguments, namedArguments)),
+            (namedArguments == null ||
+                mapEquals(widget.namedArguments, namedArguments)),
       ),
       matchCount: matchCount,
     );
