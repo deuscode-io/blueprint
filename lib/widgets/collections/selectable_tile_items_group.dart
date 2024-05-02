@@ -1,3 +1,5 @@
+import 'package:blueprint/utils/appearance/library_appearance.dart';
+import 'package:blueprint/utils/extensions/context_ext.dart';
 import 'package:flutter/material.dart';
 
 class SelectableTileItemsGroup extends StatelessWidget {
@@ -13,7 +15,12 @@ class SelectableTileItemsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: isSelected ? Colors.cyan : Colors.transparent,
+      color: isSelected
+          ? context.getThemeColor(
+              light: AppColorsLight.selectedTile,
+              dark: AppColorsDark.selectedTile,
+            )
+          : Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(

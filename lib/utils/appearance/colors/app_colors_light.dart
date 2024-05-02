@@ -34,6 +34,7 @@ class AppColorsLight {
   // app colors
   static const threeDotIndicator = Color(0xff6750a4);
   static const dragHandler = Color(0xff6750a4);
+  static const selectedTile = Color(0x806750a4);
 
   static const enabledBorder = Color(0xffd0bcff);
   static const focusedBorder = Color(0xff6750a4);

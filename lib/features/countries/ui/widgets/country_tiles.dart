@@ -19,7 +19,7 @@ class CountryTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (countries.isEmpty) return const _CountryNotFound();
+    if (countries.isEmpty) return const CountryNotFound();
 
     return Scrollbar(
       controller: scrollController,
@@ -46,14 +46,18 @@ class CountryTiles extends StatelessWidget {
   }
 }
 
-class _CountryNotFound extends StatelessWidget {
-  const _CountryNotFound();
+class CountryNotFound extends StatelessWidget {
+  const CountryNotFound({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 24, top: 16),
-      child: Text('Not found'),
+    return Container(
+      margin: const EdgeInsets.only(top: 32),
+      alignment: Alignment.topCenter,
+      child: Text(
+        'Oops... nothing found',
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
     );
   }
 }
