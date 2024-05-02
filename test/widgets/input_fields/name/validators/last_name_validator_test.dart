@@ -33,7 +33,11 @@ void main() {
       test(
         'WHEN a valid last name is entered',
         () {
-          _verifyValidationResult(name: validName, isPressed: true, hasFocus: true);
+          _verifyValidationResult(
+            name: validName,
+            isPressed: true,
+            hasFocus: true,
+          );
           _verifyValidationResult(name: validName, isPressed: true);
           _verifyValidationResult(name: validName, hasFocus: true);
           _verifyValidationResult(name: validName);
@@ -48,10 +52,23 @@ void main() {
       test(
         'WHEN a last name is not entered',
         () {
-          _verifyValidationResult(isPressed: true, hasFocus: true, error: emptyError);
+          _verifyValidationResult(
+            isPressed: true,
+            hasFocus: true,
+            error: emptyError,
+          );
           _verifyValidationResult(isPressed: true, error: emptyError);
-          _verifyValidationResult(name: emptyName, isPressed: true, hasFocus: true, error: emptyError);
-          _verifyValidationResult(name: emptyName, isPressed: true, error: emptyError);
+          _verifyValidationResult(
+            name: emptyName,
+            isPressed: true,
+            hasFocus: true,
+            error: emptyError,
+          );
+          _verifyValidationResult(
+            name: emptyName,
+            isPressed: true,
+            error: emptyError,
+          );
         },
       );
     },
@@ -63,8 +80,17 @@ void main() {
       test(
         'WHEN a last name is partially entered',
         () {
-          _verifyValidationResult(name: notValidName, isPressed: true, hasFocus: true, error: notValidError);
-          _verifyValidationResult(name: notValidName, isPressed: true, error: notValidError);
+          _verifyValidationResult(
+            name: notValidName,
+            isPressed: true,
+            hasFocus: true,
+            error: notValidError,
+          );
+          _verifyValidationResult(
+            name: notValidName,
+            isPressed: true,
+            error: notValidError,
+          );
           _verifyValidationResult(name: notValidName, error: notValidError);
         },
       );

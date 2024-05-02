@@ -5,7 +5,6 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../../test_utils/mocks/library_mocks.dart';
 
-
 final _hiveDB = MockHive();
 final _hiveBox = MockBox();
 const _authToken = 'some auth token';
@@ -13,7 +12,8 @@ const _databaseConfig = DatabaseConfig();
 
 void main() {
   openBox() => _hiveDB.openBox(_databaseConfig.authenticationTableName);
-  putTokenIntoBox() => _hiveBox.put(_databaseConfig.authTokenFieldName, _authToken);
+  putTokenIntoBox() =>
+      _hiveBox.put(_databaseConfig.authTokenFieldName, _authToken);
   closeBox() => _hiveBox.close();
 
   setUp(() {

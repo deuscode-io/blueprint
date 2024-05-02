@@ -61,7 +61,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           firstName: event.firstName,
-          firstNameError: firstNameValidator.call(name: event.firstName, hasFocus: true),
+          firstNameError:
+              firstNameValidator.call(name: event.firstName, hasFocus: true),
         ),
       );
     });
@@ -69,7 +70,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateFirstNameFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          firstNameError: firstNameValidator.call(name: loadedState.firstName, hasFocus: event.hasFocus),
+          firstNameError: firstNameValidator.call(
+            name: loadedState.firstName,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
@@ -78,7 +82,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           lastName: event.lastName,
-          lastNameError: lastNameValidator.call(name: event.lastName, hasFocus: true),
+          lastNameError:
+              lastNameValidator.call(name: event.lastName, hasFocus: true),
         ),
       );
     });
@@ -86,7 +91,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateLastNameFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          lastNameError: lastNameValidator.call(name: loadedState.lastName, hasFocus: event.hasFocus),
+          lastNameError: lastNameValidator.call(
+            name: loadedState.lastName,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });
@@ -95,7 +103,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           email: event.email,
-          emailError: appEmailValidator.call(email: event.email, hasFocus: true),
+          emailError:
+              appEmailValidator.call(email: event.email, hasFocus: true),
         ),
       );
     });
@@ -103,7 +112,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateEmailFocus>((event, emit) {
       emit(
         loadedState.copyWith(
-          emailError: appEmailValidator.call(email: loadedState.email, hasFocus: event.hasFocus),
+          emailError: appEmailValidator.call(
+            email: loadedState.email,
+            hasFocus: event.hasFocus,
+          ),
         ),
       );
     });

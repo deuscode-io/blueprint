@@ -9,7 +9,8 @@ class CommonDioInterceptors {
         final authenticationCubit = Injector.get<AuthenticationCubit>();
 
         final bearerHeader = switch (authenticationCubit.state) {
-          final AuthenticationStateAuthenticated auth => 'Bearer ${auth.authToken}',
+          final AuthenticationStateAuthenticated auth =>
+            'Bearer ${auth.authToken}',
           _ => null,
         };
 

@@ -1,8 +1,8 @@
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/features/countries/actions/show_countries_bottom_sheet_action.dart';
 import 'package:blueprint/features/countries/models/country.dart';
 import 'package:blueprint/features/countries/ui/widgets/country_flag.dart';
-import 'package:blueprint/features/countries/actions/show_countries_bottom_sheet_action.dart';
 import 'package:blueprint/widgets/buttons/app_ink_well.dart';
 import 'package:blueprint/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,8 @@ class CountryCodeField extends StatelessWidget {
   final ValueChanged<Country> onChanged;
   final String? errorText;
 
-  static final ShowCountriesBottomSheetAction _showCountriesBottomSheet = Injector.get();
+  static final ShowCountriesBottomSheetAction _showCountriesBottomSheet =
+      Injector.get();
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,12 @@ class CountryCodeField extends StatelessWidget {
             controller: controller,
             decoration: InputDecoration(
               errorText: errorText,
-              prefixIcon: country == null ? const Icon(Icons.language) : CountryFlag(isoCode: country!.isoCode),
-              label: const TranslatedText(LocaleKeys.text_field_labels_country_code),
+              prefixIcon: country == null
+                  ? const Icon(Icons.language)
+                  : CountryFlag(isoCode: country!.isoCode),
+              label: const TranslatedText(
+                LocaleKeys.text_field_labels_country_code,
+              ),
             ),
           ),
           AppInkWell(
@@ -47,7 +52,9 @@ class CountryCodeField extends StatelessWidget {
                 selectedCountry: country ?? countries.first,
               );
 
-              if (newCountry != null && context.mounted && newCountry != country) {
+              if (newCountry != null &&
+                  context.mounted &&
+                  newCountry != country) {
                 onChanged.call(newCountry);
               }
             },

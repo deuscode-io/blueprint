@@ -63,7 +63,8 @@ void main() async {
 
 Future<void> _askForAppTrackingTransparencyPermission() async {
   try {
-    final permission = await AppTrackingTransparency.trackingAuthorizationStatus;
+    final permission =
+        await AppTrackingTransparency.trackingAuthorizationStatus;
     if (permission == TrackingStatus.notDetermined) {
       await AppTrackingTransparency.requestTrackingAuthorization();
     }

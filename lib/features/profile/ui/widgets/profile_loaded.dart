@@ -19,7 +19,8 @@ class ProfileLoaded extends StatefulWidget {
   State<ProfileLoaded> createState() => _ProfileLoadedState();
 }
 
-class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControllersMixin, FocusNodesMixin {
+class _ProfileLoadedState extends State<ProfileLoaded>
+    with TextEditingControllersMixin, FocusNodesMixin {
   final ProfileBloc _profileBloc = Injector.get();
 
   ProfileStateLoaded get _state => _profileBloc.loadedState;
@@ -91,7 +92,8 @@ class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControlle
                     flex: 50,
                     child: CountryCodeField(
                       controller: countryCodeController,
-                      onChanged: (country) => _profileBloc.add(UpdateCountry(country)),
+                      onChanged: (country) =>
+                          _profileBloc.add(UpdateCountry(country)),
                       errorText: _state.phoneNumberError == null ? null : ' ',
                       country: _state.country,
                       countries: _state.countries,
@@ -125,7 +127,8 @@ class _ProfileLoadedState extends State<ProfileLoaded> with TextEditingControlle
                   }
                 },
                 label: 'Update profile',
-                buttonState: _state.isUpdating ? ButtonState.busy : ButtonState.enabled,
+                buttonState:
+                    _state.isUpdating ? ButtonState.busy : ButtonState.enabled,
               ),
             ),
           ],
