@@ -6,6 +6,7 @@ mixin TextEditingControllersMixin<T extends StatefulWidget> on State<T> {
   late TextEditingController emailController;
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
+  late TextEditingController searchController;
 
   @override
   void initState() {
@@ -15,6 +16,7 @@ mixin TextEditingControllersMixin<T extends StatefulWidget> on State<T> {
     emailController = TextEditingController();
     countryCodeController = TextEditingController();
     phoneNumberController = TextEditingController();
+    searchController = TextEditingController();
   }
 
   @override
@@ -24,6 +26,7 @@ mixin TextEditingControllersMixin<T extends StatefulWidget> on State<T> {
     emailController.dispose();
     countryCodeController.dispose();
     phoneNumberController.dispose();
+    searchController.dispose();
     super.dispose();
   }
 }

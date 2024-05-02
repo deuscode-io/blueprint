@@ -1,6 +1,6 @@
 import 'package:blueprint/features/countries/models/country.dart';
 import 'package:blueprint/features/countries/ui/widgets/country_tiles.dart';
-import 'package:blueprint/widgets/input_fields/search_field.dart';
+import 'package:blueprint/widgets/bottom_sheets/search_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class CountriesBottomSheet extends StatefulWidget {
@@ -35,7 +35,7 @@ class _CountriesBottomSheetState extends State<CountriesBottomSheet> {
     return SafeArea(
       bottom: true,
       child: Scaffold(
-        appBar: SearchField(
+        appBar: SearchAppBar(
           onChanged: _updateCountriesListOnNewSearch,
         ),
         body: CountryTiles(

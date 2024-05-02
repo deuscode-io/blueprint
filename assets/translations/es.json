@@ -28,5 +28,8 @@
   "button_actions": {
     "reload_profile": "Recargar perfil",
     "logout": "Cerrar sesión"
+  },
+  "search_labels" : {
+    "country_phone" : "Nombre del país"
   }
 }

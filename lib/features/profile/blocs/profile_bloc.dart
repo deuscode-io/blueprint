@@ -103,8 +103,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(
         loadedState.copyWith(
           email: event.email,
-          emailError:
-              appEmailValidator.call(email: event.email, hasFocus: true),
+          emailError: appEmailValidator.call(
+            email: event.email,
+            hasFocus: true,
+          ),
         ),
       );
     });

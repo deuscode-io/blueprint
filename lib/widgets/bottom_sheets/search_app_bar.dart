@@ -1,12 +1,14 @@
+import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/widgets/bottom_sheets/drag_handler.dart';
+import 'package:blueprint/widgets/input_fields/search/search_field.dart';
 import 'package:flutter/material.dart';
 
 const double _toolbarHeight = 100;
 
-class SearchField extends StatelessWidget implements PreferredSizeWidget {
+class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   final ValueChanged<String> onChanged;
 
-  const SearchField({
+  const SearchAppBar({
     super.key,
     required this.onChanged,
   });
@@ -21,12 +23,10 @@ class SearchField extends StatelessWidget implements PreferredSizeWidget {
         children: [
           const DragHandler(),
           const SizedBox(height: 16),
-          TextField(
-            autofocus: true,
-            decoration: const InputDecoration(
-              hintText: 'Search ...',
-            ),
-            onChanged: (search) => onChanged(search.trim()),
+          SearchField(
+            label: LocaleKeys.search_labels_country_phone,
+            prefixIcon: const Icon(Icons.language),
+            onChanged: onChanged,
           ),
           const SizedBox(height: 8),
         ],
