@@ -2,7 +2,7 @@ import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/i18n/locale_keys.g.dart';
 import 'package:blueprint/features/countries/models/country.dart';
 import 'package:blueprint/features/countries/ui/widgets/country_flag.dart';
-import 'package:blueprint/features/countries/actions/show_counries_bottom_sheet_action.dart';
+import 'package:blueprint/features/countries/actions/show_countries_bottom_sheet_action.dart';
 import 'package:blueprint/widgets/buttons/app_ink_well.dart';
 import 'package:blueprint/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';

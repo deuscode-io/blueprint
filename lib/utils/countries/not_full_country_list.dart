@@ -1,3 +1,5 @@
+import 'package:blueprint/features/countries/models/country.dart';
+
 final rawCountries = <Map<String, dynamic>>[
   {
     'name': 'Qatar',
@@ -392,3 +394,18 @@ final rawCountries = <Map<String, dynamic>>[
     'minLength': 9,
   }
 ];
+
+List<Country> countries() {
+  return rawCountries
+      .map(
+        (e) => Country(
+          name: e['name'] as String,
+          isoCode: e['isoCode'] as String,
+          phoneCode: e['phoneCode'] as String,
+          mask: e['mask'] as String,
+          minLength: e['minLength'] as int,
+        ),
+      )
+      .toList()
+    ..sort((a, b) => a.name.compareTo(b.name));
+}

@@ -9,13 +9,11 @@ class CountriesBottomSheet extends StatefulWidget {
     required this.scrollController,
     required this.countries,
     required this.selectedCountry,
-    required this.isCountryResidenceUseCase,
   });
 
   final ScrollController scrollController;
   final List<Country> countries;
   final Country selectedCountry;
-  final bool isCountryResidenceUseCase;
 
   @override
   State<CountriesBottomSheet> createState() => _CountriesBottomSheetState();
@@ -45,7 +43,6 @@ class _CountriesBottomSheetState extends State<CountriesBottomSheet> {
           countries: _countries,
           currentCountry: widget.selectedCountry,
           countryTileHeight: _countryTileHeight,
-          isCountryResidenceUseCase: widget.isCountryResidenceUseCase,
         ),
       ),
     );

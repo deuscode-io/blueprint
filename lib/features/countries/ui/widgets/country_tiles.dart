@@ -10,14 +10,12 @@ class CountryTiles extends StatelessWidget {
     required this.countries,
     required this.currentCountry,
     required this.countryTileHeight,
-    required this.isCountryResidenceUseCase,
   });
 
   final ScrollController scrollController;
   final List<Country> countries;
   final Country currentCountry;
   final double countryTileHeight;
-  final bool isCountryResidenceUseCase;
 
   @override
   Widget build(BuildContext context) {

@@ -13,21 +13,6 @@ class GetCountriesRepo {
   Future<List<Country>> call() async {
     // final response = await httpClient.get('v1.0/profile/countries');
 
-    final result = <Country>[];
-    for (final map in rawCountries) {
-      result.add(
-        Country(
-          name: map['name'] as String,
-          isoCode: map['isoCode'] as String,
-          phoneCode: map['phoneCode'] as String,
-          mask: map['mask'] as String,
-          minLength: map['minLength'] as int,
-        ),
-      );
-    }
-
-    result.sort((a, b) => a.name.compareTo(b.name));
-
-    return result;
+    return countries();
   }
 }
