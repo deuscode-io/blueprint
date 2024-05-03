@@ -1,7 +1,6 @@
+import 'package:blueprint/core/l10n/l10n_config.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../core/i18n/i18n_config.dart';
 
 class LocalizationWrapper extends StatelessWidget {
   const LocalizationWrapper({super.key, required this.child});
@@ -14,8 +13,8 @@ class LocalizationWrapper extends StatelessWidget {
       useOnlyLangCode: true,
       path: 'assets/translations',
       useFallbackTranslations: true,
-      fallbackLocale: I18nConfig.defaultLocale,
-      supportedLocales: I18nConfig.supportedLocales,
+      fallbackLocale: L10Config.defaultLocale,
+      supportedLocales: L10Config.supportedLocales,
       child: child,
     );
   }

@@ -1,5 +1,5 @@
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
-import 'package:blueprint/core/i18n/translate.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/translate.dart';
 import 'package:blueprint/features/countries/models/country.dart';
 import 'package:blueprint/features/countries/ui/countries_bottom_sheet.dart';
 import 'package:blueprint/features/countries/ui/widgets/country_tile.dart';

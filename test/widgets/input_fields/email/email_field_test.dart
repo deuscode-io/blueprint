@@ -1,4 +1,4 @@
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
 import 'package:blueprint/widgets/buttons/suffix_icon_button.dart';
 import 'package:blueprint/widgets/input_fields/email/email_field.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 import 'package:blueprint/core/DI/injector.dart';
 import 'package:blueprint/core/features/logs/logger.dart';
-import 'package:blueprint/core/i18n/translate.dart';
+import 'package:blueprint/core/l10n/translate.dart';
 import 'package:blueprint/widgets/indicators/three_dots_indicator.dart';
 import 'package:flutter/material.dart';
 

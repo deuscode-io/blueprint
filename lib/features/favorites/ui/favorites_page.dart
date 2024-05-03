@@ -1,4 +1,4 @@
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
 import 'package:blueprint/widgets/texts/translated_text.dart';
 import 'package:flutter/material.dart';
 
