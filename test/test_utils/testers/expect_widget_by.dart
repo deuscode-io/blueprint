@@ -1,4 +1,4 @@
-import 'package:blueprint/core/i18n/translate.dart';
+import 'package:blueprint/core/l10n/translate.dart';
 import 'package:blueprint/widgets/texts/translated_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';

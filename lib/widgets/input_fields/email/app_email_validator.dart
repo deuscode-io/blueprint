@@ -1,4 +1,4 @@
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,4 +1,4 @@
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
 import 'package:blueprint/widgets/input_fields/name/validators/first_name_validator.dart';
 import 'package:flutter_test/flutter_test.dart';
 

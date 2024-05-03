@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:alchemist/alchemist.dart';
 import 'package:blueprint/core/DI/dependency_registrar.dart';
 import 'package:blueprint/core/features/detectors/test_environment_detector.dart';
-import 'package:blueprint/core/i18n/translate.dart';
+import 'package:blueprint/core/l10n/translate.dart';
 import 'package:blueprint/utils/appearance/themes/theme_data.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/localization.dart';

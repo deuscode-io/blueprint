@@ -1,5 +1,5 @@
 import 'package:blueprint/core/DI/dependency_registrar.dart';
-import 'package:blueprint/core/i18n/locale_keys.g.dart';
+import 'package:blueprint/core/l10n/locale_keys.g.dart';
 import 'package:blueprint/features/countries/actions/show_countries_bottom_sheet_action.dart';
 import 'package:blueprint/features/countries/models/country.dart';
 import 'package:blueprint/features/countries/ui/widgets/country_flag.dart';

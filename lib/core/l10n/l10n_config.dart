@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-class I18nConfig {
-  const I18nConfig();
+class L10Config {
+  const L10Config();
 
   static const defaultLocale = Locale('en');
 

@@ -77,7 +77,7 @@ abstracted. Please use TranslatedText widget instead of using easy_localization 
 ### How to generate locale keys:
 
 ```shell
-dart run easy_localization:generate -O lib/core/i18n -f keys -o locale_keys.g.dart --source-dir assets/translations --source-file en.json
+dart run easy_localization:generate -O lib/core/l10n -f keys -o locale_keys.g.dart --source-dir assets/translations --source-file en.json
 ```
 
 [Docs](https://pub.dev/packages/easy_localization#-localization-keys)
