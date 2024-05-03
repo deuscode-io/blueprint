@@ -18,6 +18,7 @@ Template project to start development
     - [How to generate splash screen:](#how-to-generate-splash-screen)
 - [Launcher icons](#launcher-icons)
     - [How to generate launcher icons:](#how-to-generate-launcher-icons)
+- [Profile editing](#profile-editing)
 
 ---
 
@@ -43,6 +44,7 @@ Template project to start development
 19. BLoC (a predictable state management)
 20. Authentication cubit to handle auth state 
 21. Tuned dart analyzer rules
+22. Profile editing screen
 
 ---
 
@@ -95,6 +97,27 @@ dart run flutter_native_splash:create --path=flutter_native_splash.yaml
 ```
 
 [Docs](https://pub.dev/packages/flutter_native_splash)
+
+---
+
+## Profile editing
+
+Rules:
+1. Users may see an error in a blank field if they hit the submit button.
+2. The non-valid field error lights up when focus is lost
+3. The phone always receives the correct phone mask.
+4. When selecting a country, the country list scrolls to the currently selected country
+
+![profile](https://github.com/deuscode-io/blueprint/assets/165549052/e13af5e0-09f5-4cca-be22-285f38fb2903)
+
+
+### How to generate launcher icons:
+
+```shell
+dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+```
+
+[Docs](https://pub.dev/packages/flutter_launcher_icons)
 
 ---
 
