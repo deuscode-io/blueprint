@@ -136,10 +136,4 @@ class _ProfileLoadedState extends State<ProfileLoaded>
       },
     );
   }
-
-  @override
-  void didUpdateWidget(covariant ProfileLoaded oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-  }
 }

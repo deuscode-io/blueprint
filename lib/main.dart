@@ -6,7 +6,14 @@ import 'package:blueprint/app/wrappers/multi_bloc_provider_wrapper.dart';
 import 'package:blueprint/core/DI/setup_automatic_di.dart';
 import 'package:blueprint/core/DI/setup_manual_di.dart';
 import 'package:blueprint/core/configs/database_config.dart';
+import 'package:blueprint/core/configs/secrets/secrets.dart';
+import 'package:blueprint/core/firebase/default_firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -19,14 +26,13 @@ void main() async {
 
   await _askForAppTrackingTransparencyPermission();
 
-  //TODO uncomment when Firebase is integrated
-  // await _setupFirebaseCore();
-  //
-  // _setupFirebaseCrashlytics();
-  //
-  // await _setupFirebaseAnalytics();
-  //
-  // await _setupFirebaseRemoteConfig();
+  await _setupFirebaseCore();
+
+  _setupFirebaseCrashlytics();
+
+  await _setupFirebaseAnalytics();
+
+  await _setupFirebaseRemoteConfig();
 
   await _setupHiveDB();
 
@@ -76,39 +82,39 @@ Future<void> _askForAppTrackingTransparencyPermission() async {
   }
 }
 
-//TODO uncomment when Firebase is integrated
-// Future<void> _setupFirebaseCore() async {
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
-//   );
-// }
-//
-// void _setupFirebaseCrashlytics() {
-//   if (kDebugMode) return;
-//
-//   FlutterError.onError = (errorDetails) {
-//     FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
-//   };
-//   PlatformDispatcher.instance.onError = (error, stack) {
-//     FirebaseCrashlytics.instance.recordError(error, stack);
-//     return true;
-//   };
-// }
-//
-// Future<void> _setupFirebaseAnalytics() async {
-//   await FirebaseAnalytics.instance.app.setAutomaticDataCollectionEnabled(kReleaseMode);
-// }
-//
-// Future<void> _setupFirebaseRemoteConfig() async {
-//   final remoteConfig = FirebaseRemoteConfig.instance;
-//
-//   await remoteConfig.setConfigSettings(
-//     RemoteConfigSettings(
-//       fetchTimeout: const Duration(minutes: 1),
-//       minimumFetchInterval: kReleaseMode ? const Duration(hours: 3) : const Duration(minutes: 30),
-//     ),
-//   );
-// }
+Future<void> _setupFirebaseCore() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+}
+
+void _setupFirebaseCrashlytics() {
+  if (kDebugMode) return;
+
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack);
+    return true;
+  };
+}
+
+Future<void> _setupFirebaseAnalytics() async {
+  await FirebaseAnalytics.instance.app
+      .setAutomaticDataCollectionEnabled(kReleaseMode);
+}
+
+Future<void> _setupFirebaseRemoteConfig() async {
+  final remoteConfig = FirebaseRemoteConfig.instance;
+
+  await remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: Duration(minutes: Secrets.rcFetchTimeoutInMinutes),
+      minimumFetchInterval: Duration(minutes: Secrets.rcFetchIntervalInMinutes),
+    ),
+  );
+}
 
 Future<void> _setupHiveDB() async {
   await Hive.initFlutter(const DatabaseConfig().hiveFolderPath);

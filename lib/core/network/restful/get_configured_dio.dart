@@ -1,6 +1,7 @@
 import 'package:blueprint/core/configs/urls_config.dart';
 import 'package:blueprint/core/features/device_info/providers/device_info_provider.dart';
 import 'package:blueprint/core/features/package_info/package_info_provider.dart';
+import 'package:blueprint/core/firebase/installation_id/firebase_installation_id_provider.dart';
 import 'package:blueprint/core/network/restful/common_dio_interceptors.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -14,15 +15,14 @@ class GetConfiguredDio {
   final PackageInfoProvider packageInfoProvider;
   final DeviceInfoProvider deviceInfoProvider;
 
-  //TODO uncomment when Firebase is integrated
-  // final FirebaseInstallationIdProvider firebaseInstallationIdProvider;
+  final FirebaseInstallationIdProvider firebaseInstallationIdProvider;
 
   const GetConfiguredDio({
     required this.talker,
     required this.urlsConfig,
     required this.packageInfoProvider,
     required this.deviceInfoProvider,
-    // required this.firebaseInstallationIdProvider,
+    required this.firebaseInstallationIdProvider,
   });
 
   Future<Dio> call() async {

@@ -4,8 +4,10 @@ import 'package:blueprint/core/configs/urls_config.dart';
 import 'package:blueprint/core/features/device_info/providers/device_info_provider.dart';
 import 'package:blueprint/core/features/logs/logger.dart';
 import 'package:blueprint/core/features/package_info/package_info_provider.dart';
+import 'package:blueprint/core/firebase/installation_id/firebase_installation_id_provider.dart';
 import 'package:blueprint/core/network/restful/get_configured_dio.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_app_installations/firebase_app_installations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -26,11 +28,10 @@ Future<void> setupManualDI() async {
     () => DeviceInfoProvider(deviceInfoPlugin: Injector.get()),
   );
 
-  //TODO uncomment when Firebase is integrated
-  // DependencyRegistrar.registerFactory(() => FirebaseInstallations.instance);
-  // DependencyRegistrar.registerFactory(
-  //   () => FirebaseInstallationIdProvider(firebaseInstallations: Injector.get()),
-  // );
+  DependencyRegistrar.registerFactory(() => FirebaseInstallations.instance);
+  DependencyRegistrar.registerFactory(
+    () => FirebaseInstallationIdProvider(firebaseInstallations: Injector.get()),
+  );
 
   DependencyRegistrar.registerSingleton(TalkerFlutter.init());
   DependencyRegistrar.registerFactory(() => Logger(talker: Injector.get()));
@@ -53,7 +54,7 @@ Future<void> _setupHttpClients() async {
     urlsConfig: Injector.get(),
     deviceInfoProvider: Injector.get(),
     packageInfoProvider: Injector.get(),
-    // firebaseInstallationIdProvider: Injector.get(),
+    firebaseInstallationIdProvider: Injector.get(),
   )();
 
   DependencyRegistrar.registerSingleton(configuredDio);
